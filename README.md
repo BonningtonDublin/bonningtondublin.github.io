@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="reg.js"></script>
     <script>
+    $("#CHECK-OUT").datepicker({ minDate: 1 });
     document.getElementById("CHECK-IN").valueAsDate = new Date(); 
     </script>
   </head>
