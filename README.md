@@ -14,7 +14,7 @@
     <script>
     document.getElementById("CHECK-IN").valueAsDate = new Date(); 
     $( function() {
-      $("#CHECK-OUT").datepicker({ minDate: '0' });
+      $("#CHECK-OUT").datepicker({ minDate: 0 });
     } );
     </script>
   </head>
