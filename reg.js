@@ -1,3 +1,4 @@
-$( function() {
-    $("#CHECK-OUT").datepicker({ minDate: 0 });
-} );
+var dateToday = new Date();
+var dates = $("#CHECK-OUT").datepicker({
+    minDate: 1
+});
