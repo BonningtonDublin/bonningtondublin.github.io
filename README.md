@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-<h3>All guests please provide their Car Registration.</h3>
+<h2>All guests please provide their Car Registration.</h2>
 
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post">
     <div class="form-group">
