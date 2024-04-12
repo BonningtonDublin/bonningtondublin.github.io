@@ -27,12 +27,12 @@
     <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
     <div class="form-group row">
-    <label for="ROOM" class="col-sm-6">*Room Number:</label>
+    <label for="ROOM" class="col-sm-5">*Room Number:</label>
     <label for="CHECK-OUT" class="col-sm-6">*Check-Out Date:</label>
     </div>
     <div class="form-group row">
-    <label></label>
-    <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-4" autocomplete="off" required>
+    <label style="padding-left:15px"></label>
+    <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-3" autocomplete="off" required>
     <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" autocomplete="off" required hidden>
     <label class="col-sm-1"></label>
     <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-6" autocomplete="off" required>
