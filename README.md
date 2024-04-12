@@ -33,7 +33,7 @@
     <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-5" autocomplete="off" required>
     <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" autocomplete="off" required hidden>
     <label class="col-sm-1"></label>
-    <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-6" autocomplete="off" required>
+    <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="padding-left:30px" autocomplete="off" required>
     </div>
     <div class="form-group">
     <label for="OBSERVATIONS">Remarks:</label>
