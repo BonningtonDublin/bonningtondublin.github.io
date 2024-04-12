@@ -41,7 +41,7 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
+    <button type="submit" class="btn btn-success btn-lg btn-block">REGISTER</button>
 
   </form>
 </html>
