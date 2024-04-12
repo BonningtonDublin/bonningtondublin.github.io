@@ -47,7 +47,6 @@
 </html>
 
 <script>
-//document.getElementById("CHECK-IN").valueAsDate = new Date();
 // getFullYear, getMonth, getDate, getHours, getMinutes all return values of local time.
 const convertToDateTimeLocalString = (date) => {
   const year = date.getFullYear();
@@ -58,8 +57,10 @@ const convertToDateTimeLocalString = (date) => {
 
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
+//Check-in date as today
 const currentTime = new Date();
 document.getElementById('CHECK-IN').value = convertToDateTimeLocalString(currentTime);
-var minDate = new Date(currentTime.setDate(currentTime.getDate() + 2)).toISOString().split("T")[0];
+//Minimun check-out date from 1 day ahead
+var minDate = new Date(currentTime.setDate(currentTime.getDate() + 1)).toISOString().split("T")[0];
 document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
 </script>
