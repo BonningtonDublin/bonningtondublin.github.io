@@ -58,6 +58,8 @@ const convertToDateTimeLocalString = (date) => {
 
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
-const currentTime = new Date()
-document.getElementById('CHECK-IN').value = convertToDateTimeLocalString(currentTime)
+const currentTime = new Date();
+document.getElementById('CHECK-IN').value = convertToDateTimeLocalString(currentTime);
+var minDate = new Date(currentTime.setDate(currentTime.getDate() + 2)).toISOString().split("T")[0];
+document.getElementsByName("CHECK-IN")[0].setAttribute('min', minDate);
 </script>
