@@ -25,7 +25,7 @@
     <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
     <div class="form-group row">
-    <label for="ROOM" class="col-sm-6">*Room Number:</label>
+    <label for="ROOM" class="col-sm-5">*Room Number:</label>
     <label for="CHECK-OUT" class="col-sm-6">*Check-Out Date:</label>
     </div>
     <div class="form-group row">
@@ -37,7 +37,7 @@
     </div>
     <div class="form-group">
     <label for="OBSERVATIONS">Remarks:</label>
-    <textarea type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control" autocomplete="off" style="text-transform: capitalize;"></textarea>
+    <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control" autocomplete="off" style="text-transform: capitalize;">
     </div>
 
 
