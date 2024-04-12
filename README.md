@@ -15,8 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-<h2>All guests please provide their Car Registration.</h2>
-
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post">
     <div class="form-group">
     <label for="NAME">*Name:</label>
@@ -32,9 +30,9 @@
     </div>
     <div class="form-group row">
     <label style="padding-left:15px"></label>
-    <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-4" autocomplete="off" required>
+    <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-5" autocomplete="off" required>
     <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" autocomplete="off" required hidden>
-    <label class="col-sm-2"></label>
+    <label class="col-sm-1"></label>
     <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" autocomplete="off" required>
     </div>
     <div class="form-group">
