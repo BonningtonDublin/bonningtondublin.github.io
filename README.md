@@ -61,5 +61,5 @@ const convertToDateTimeLocalString = (date) => {
 const currentTime = new Date();
 document.getElementById('CHECK-IN').value = convertToDateTimeLocalString(currentTime);
 var minDate = new Date(currentTime.setDate(currentTime.getDate() + 2)).toISOString().split("T")[0];
-document.getElementsByName("CHECK-IN")[0].setAttribute('min', minDate);
+document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
 </script>
