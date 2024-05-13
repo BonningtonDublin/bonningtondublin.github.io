@@ -21,7 +21,7 @@
     <input type="text" id="NAME" name="NAME" class="form-control" autocomplete="off"  onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
     <div class="form-group">
-    <label for="CAR-REGISTRATION">*Car Registration:</label>
+    <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
     <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
     <div class="form-group row">
