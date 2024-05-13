@@ -38,6 +38,10 @@
     <label for="OBSERVATIONS">Remarks:</label>
     <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control" autocomplete="off" style="text-transform: capitalize;">
     </div>
+    <div class="form-group">
+    <input type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" required>
+    <label for="CONFIRMED">I confirm that the vehicle registration information provided above is accurate and true to the best of my knowledge. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.</label>
+    </div>
 
 
     <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
