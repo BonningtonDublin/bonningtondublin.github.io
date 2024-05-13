@@ -17,7 +17,7 @@
 
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="font-weight-bold text-uppercase">
     <div class="form-group">
-    <label for="NAME">*Name:</label>
+    <label for="NAME">*Your Name:</label>
     <input type="text" id="NAME" name="NAME" class="form-control" autocomplete="off"  onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
     <div class="form-group">
@@ -35,7 +35,7 @@
     <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-6" style="margin-left:30px" autocomplete="off" required>
     </div>
     <div class="form-group">
-    <label for="OBSERVATIONS">Remarks:</label>
+    <label for="OBSERVATIONS">Remarks (Optional):</label>
     <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control" autocomplete="off" style="text-transform: capitalize;">
     </div>
     <div class="form-group">
