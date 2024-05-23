@@ -18,7 +18,7 @@
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="font-weight-bold text-uppercase">
     <div class="form-group">
     <label for="NAME">*Your Name:</label>
-    <input type="text" id="NAME" name="NAME" class="form-control" autocomplete="off"  onkeyup="this.value = this.value.toUpperCase();" required>
+    <input type="text" id="NAME" name="NAME" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
     <div class="form-group">
     <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
@@ -43,13 +43,35 @@
     <input type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" required> I confirm that the vehicle registration information provided above is accurate and true to the best of my knowledge. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.</label>
     </div>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#submitModal" onClick="submitText()"> <!-- here was an syntax error. you were calling method by uts name without () sign -->
+         SUBMIT
+    </button>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
-
+    <!-- Modal -->
+    <div class="modal fade" id="submitModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="submitModalLabel">Please confirm your information!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="bodyModal">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Make Changes</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#submitModal">Confirm & Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
 </html>
 
 <script>
+
 // getFullYear, getMonth, getDate, getHours, getMinutes all return values of local time.
 const convertToDateTimeLocalString = (date) => {
   const year = date.getFullYear();
@@ -60,10 +82,22 @@ const convertToDateTimeLocalString = (date) => {
 
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
+
 //Check-in date as today
 const currentTime = new Date();
 document.getElementById('CHECK-IN').value = convertToDateTimeLocalString(currentTime);
+
 //Minimun check-out date from 1 day ahead
 var minDate = new Date(currentTime.setDate(currentTime.getDate() + 1)).toISOString().split("T")[0];
 document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
+
+
+function submitText(){
+        var html="Name: "+$("#NAME").val()
+                  +"<br>Car Registration: "+$("#CAR-REGISTRATION").val()
+                  +"<br>Room Number : "+$("#ROOM").val()
+                  +"<br>Check-Out Date: "+$("#CHECK-OUT").val()
+                  +"<br>Remarks: "+$("#OBSERVATIONS").val();
+        $("#bodyModal").html(html);
+}
 </script>
