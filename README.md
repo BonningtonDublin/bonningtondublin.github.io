@@ -93,11 +93,11 @@ document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
 
 
 function submitText(){
-        var html="Name: "+$("#NAME").val()
-                  +"<br>Car Registration: "+$("#CAR-REGISTRATION").val()
-                  +"<br>Room Number : "+$("#ROOM").val()
-                  +"<br>Check-Out Date: "+$("#CHECK-OUT").val()
-                  +"<br>Remarks: "+$("#OBSERVATIONS").val();
+        var html=$("#NAME").val()
+                  +"<br>"+$("#CAR-REGISTRATION").val()
+                  +"<br>"+$("#ROOM").val()
+                  +"<br>"+$("#CHECK-OUT").val()
+                  +"<br>"+$("#OBSERVATIONS").val();
         $("#bodyModal").html(html);
 }
 </script>
