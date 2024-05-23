@@ -61,8 +61,8 @@
           <div class="modal-body" id="bodyModal">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Make Changes</button>
-            <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#submitModal">Confirm & Save</button>
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Make Changes</button>
+            <button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitModal">Confirm & Save</button>
           </div>
         </div>
       </div>
