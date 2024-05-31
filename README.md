@@ -37,7 +37,7 @@
       <input type="radio" id="MCG" name="REASON" value="mcg" style="margin-left:15px" >
       <label class="role" for="MCG">McGettigan's</label>
       <input type="radio" id="FUNCTION" name="REASON" value="function">
-      <label class="role" for="FUNCTION">Function Event</label>
+      <label class="role" for="FUNCTION">Event / Meeting</label>
     </div>
 
     <div id="GUEST-INFO">
