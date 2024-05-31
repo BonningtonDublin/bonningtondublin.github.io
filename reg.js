@@ -14,6 +14,7 @@ document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
 
   $("#GUEST").click(function(){
     $("#GUEST-INFO").show();
+    document.getElementById('ROOM').required = true;
     document.getElementById('CHECK-OUT').value = '';
     document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
   });
