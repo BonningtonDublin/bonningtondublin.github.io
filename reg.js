@@ -30,11 +30,12 @@ document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
     document.getElementById('CHECK-OUT').value = minDate;
     document.getElementById('OBSERVATIONS').value = "McGettigan's";
   });
-  $("#FUNCTION").click(function(){
+  $("#OTHER").click(function(){
     $("#GUEST-INFO").hide();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDate;
-    document.getElementById('OBSERVATIONS').value = "Function Event";
+    document.getElementById('OBSERVATIONS').required = true;
+    document.getElementById('OBSERVATIONS').value = "Event | Meeting | ";
   });
 });
 

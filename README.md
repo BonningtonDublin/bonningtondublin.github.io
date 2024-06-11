@@ -36,8 +36,8 @@
     <div class="form-group row g-2">
       <input type="radio" id="MCG" name="REASON" value="mcg" style="margin-left:15px" >
       <label class="role" for="MCG">McGettigan's</label>
-      <input type="radio" id="FUNCTION" name="REASON" value="function">
-      <label class="role" for="FUNCTION">Event / Meeting</label>
+      <input type="radio" id="OTHER" name="REASON" value="other">
+      <label class="role" for="OTHER">Other Reason</label>
     </div>
 
     <div id="GUEST-INFO">
