@@ -43,13 +43,13 @@
     <div id="GUEST-INFO">
       <div class="form-group row">
         <label for="ROOM" class="col-sm-5">*Room Number:</label>
-        <label for="CHECK-OUT" class="col-sm-6" style="margin-left:40px">*Check-Out Date:</label>
+        <label for="CHECK-OUT" class="col-sm-5" style="margin-left:40px">*Check-Out Date:</label>
       </div>
       <div class="form-group row">
         <label style="padding-left:15px"></label>
         <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-5" autocomplete="off" required>
         <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" autocomplete="off" required hidden>
-        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-6" style="margin-left:30px" autocomplete="off" required>
+        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="margin-left:30px" autocomplete="off" required>
       </div>
     </div>
 
@@ -61,7 +61,7 @@
     <div class="row g-2" style="margin-bottom:1rem">          
       <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" style="margin-left:15px" required>
       <label class="form-check-label col-md-11" for="CONFIRMED" style="word-wrap:break-word; margin-left:20px">
-        I confirm that the vehicle registration information provided above is accurate and true to the best of my knowledge. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.
+        I confirm that the vehicle registration information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.
       </label>
     </div>
 
