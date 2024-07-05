@@ -68,7 +68,7 @@
           return dateString; // Return original date string if format is not as expected
         }
       }
-      </script>
+      </script> 
 
   </head>
 
