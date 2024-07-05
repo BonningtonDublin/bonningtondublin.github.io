@@ -7,34 +7,43 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="reg.css">
 
-        <script>
-        const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
+    <script>
+    const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
 
-        socket.onopen = function() {
-          console.log('WebSocket connection established.');
-        };
+    socket.onopen = function() {
+      console.log('WebSocket connection established.');
+    };
 
-        socket.onmessage = function(event) {
-          console.log('Received message from server: ', event.data);
-          const message = JSON.parse(event.data);
-          // Process the received data and update your tablet UI
-          document.getElementById('NAME').value =  message.name;
-          document.getElementById('ROOM').value = message.room;
-          document.getElementById('CHECK-OUT').value = message.checkout;
-        };
+    socket.onmessage = function(event) {
+      console.log('Received message from server: ', event.data);
+      const message = JSON.parse(event.data);
+      // Process the received data and update your tablet UI
+      document.getElementById('NAME').value =  message.name;
+      document.getElementById('ROOM').value = message.room;
 
-        socket.onerror = function(error) {
-          console.error('WebSocket error: ', error);
-        };
+      function updateDateField(dateTimeString) {
+        // Assuming dateTimeString is in format "YYYY-MM-DD HH:MM:SS"
+        const dateTimeParts = dateTimeString.split(' ');
+        const datePart = dateTimeParts[0]; // Get the date part
 
-        socket.onclose = function(event) {
-          if (event.wasClean) {
-            console.log('Connection closed cleanly, code=${event.code}, reason=${event.reason}');
-          } else {
-            console.error('Connection died unexpectedly');
-          }
-        };
-      </script>
+        // Update the input field with the date
+        document.getElementById('CHECK-OUT').value = datePart;
+      }
+
+    };
+
+    socket.onerror = function(error) {
+      console.error('WebSocket error: ', error);
+    };
+
+    socket.onclose = function(event) {
+      if (event.wasClean) {
+        console.log('Connection closed cleanly, code=${event.code}, reason=${event.reason}');
+      } else {
+        console.error('Connection died unexpectedly');
+      }
+    };
+  </script>
 
   </head>
 
