@@ -39,10 +39,10 @@
       };
 
       function getClientId() {
-        const userAgent = navigator.userAgent;
-        if (userAgent.includes('Android')) {
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.includes('android')) {
           return 'tablet1'; // Samsung
-        } else if (userAgent.includes('iPad') || userAgent.includes('iPhone')) {
+        } else if (userAgent.includes('ipad') || userAgent.includes('iphone') || userAgent.includes('mac')) {
           return 'tablet2'; // Apple
         }
         return 'unknown';
@@ -71,7 +71,7 @@
         }
       }
     </script>
-
+    
   </head>
 
  <!-- Optional JavaScript - jQuery first, then Popper.js, then Bootstrap JS -->
