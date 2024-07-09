@@ -13,6 +13,7 @@
       socket.onopen = function() {
         console.log('WebSocket connection established.');
         const clientId = getClientId();
+        console.log(`Registering as: ${clientId}`);
         socket.send(JSON.stringify({ register: clientId }));
       };
 
@@ -22,7 +23,7 @@
 
         if (message.name) document.getElementById('NAME').value = message.name;
         if (message.room) document.getElementById('ROOM').value = message.room;
-        if (message.checkout) updateDateField(message.checkout); // Call function to update date field
+        if (message.checkout) updateDateField(message.checkout);
       };
 
       socket.onerror = function(error) {
