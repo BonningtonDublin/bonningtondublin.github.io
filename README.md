@@ -23,7 +23,7 @@
 
         if (message.name) document.getElementById('NAME').value = message.name;
         if (message.room) document.getElementById('ROOM').value = message.room;
-        if (message.checkout) document.getElementById('CHECK-OUT').value = message.checkout;
+        if (message.checkout) updateDateField(message.checkout);
       };
 
       socket.onerror = function(error) {
@@ -46,6 +46,29 @@
           return 'ipad'; // Apple
         }
         return 'unknown';
+      }
+
+      function updateDateField(dateTimeString) {
+        const dateTimeParts = dateTimeString.split(' ');
+        if (dateTimeParts.length > 0) {
+          const datePart = dateTimeParts[0];
+          const formattedDate = formatDate(datePart);
+          console.log(datePart);
+          console.log(formattedDate);
+          document.getElementById('CHECK-OUT').value = formattedDate;
+        } else {
+          console.error('Invalid date format received from server:', dateTimeString);
+        }
+      }
+
+      function formatDate(dateString) {
+        const parts = dateString.split('-');
+        if (parts.length === 3) {
+          return `${parts[2]}-${parts[1]}-${parts[0]}`;
+        } else {
+          console.error('Invalid date format:', dateString);
+          return dateString;
+        }
       }
     </script>
 
