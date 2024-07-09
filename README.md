@@ -57,9 +57,9 @@
 
       function updateUI(data) {
         // Update UI elements with data (example function)
-        document.getElementById('NAME').value = data.name;
-        document.getElementById('ROOM').value = data.room;
-        updateDateField(data.checkout);
+        if(data.name) document.getElementById('NAME').value = data.name;
+        if(data.room) document.getElementById('ROOM').value = data.room;
+        if(data.checkout) updateDateField(data.checkout);
       }
 
 
