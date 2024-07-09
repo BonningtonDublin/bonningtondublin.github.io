@@ -50,8 +50,8 @@
 
       function updateUI(data) {
         // Update UI elements with data (example function)
-        document.getElementById('name').innerText = data.name;
-        document.getElementById('room').innerText = data.room;
+        document.getElementById('NAME').value = data.name;
+        document.getElementById('ROOM').value = data.room;
         updateDateField(data.checkout);
       }
 
@@ -85,7 +85,7 @@
           const formattedDate = formatDate(datePart);
           console.log(datePart);
           console.log(formattedDate);
-          document.getElementById('CHECK-OUT').innerText = formattedDate;
+          document.getElementById('CHECK-OUT').value = formattedDate;
         } else {
           console.error('Invalid date format received from server:', dateTimeString);
         }
