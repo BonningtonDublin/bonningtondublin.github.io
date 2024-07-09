@@ -17,12 +17,38 @@
       socket.onmessage = function(event) {
         console.log('Received message from server: ', event.data);
         const message = JSON.parse(event.data);
-        // Process the received data and update your tablet UI
-        document.getElementById('NAME').value =  message.name;
-        document.getElementById('ROOM').value = message.room;
-        updateDateField(message.checkout); // Call function to update date field
 
-        function updateDateField(dateTimeString) {
+        // Process the received data and update your tablet UI
+        if (message.name) document.getElementById('NAME').value = message.name;
+        if (message.room) document.getElementById('ROOM').value = message.room;
+        if (message.checkout) updateDateField(message.checkout); // Call function to update date field
+      };
+
+      socket.onerror = function(error) {
+        console.error('WebSocket error: ', error);
+      };
+
+      socket.onclose = function(event) {
+        if (event.wasClean) {
+          console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+        } else {
+          console.error('Connection died unexpectedly');
+        }
+      };
+
+      // Function to format date from DD-MM-YYYY to YYYY-MM-DD
+      function formatDate(dateString) {
+        const parts = dateString.split('-');
+        if (parts.length === 3) {
+          return `${parts[2]}-${parts[1]}-${parts[0]}`;
+        } else {
+          console.error('Invalid date format:', dateString);
+          return dateString; // Return original date string if format is not as expected
+        }
+      }
+
+      // Function to update the date field
+      function updateDateField(dateTimeString) {
         // Split dateTimeString into date and time parts
         const dateTimeParts = dateTimeString.split(' ');
 
@@ -33,42 +59,16 @@
 
           // Convert datePart to YYYY-MM-DD format
           const formattedDate = formatDate(datePart);
-            console.log(datePart);
-            console.log(formattedDate);
+          console.log(datePart);
+          console.log(formattedDate);
 
           // Update the input field with the date
-          document.getElementById('CHECK-OUT').value =  formattedDate;
-
+          document.getElementById('CHECK-OUT').value = formattedDate;
         } else {
           console.error('Invalid date format received from server:', dateTimeString);
         }
       }
-
-      };
-
-      socket.onerror = function(error) {
-        console.error('WebSocket error: ', error);
-      };
-
-      socket.onclose = function(event) {
-        if (event.wasClean) {
-          console.log('Connection closed cleanly, code=${event.code}, reason=${event.reason}');
-        } else {
-          console.error('Connection died unexpectedly');
-        }
-      };
-
-      // Function to format date from DD-MM-YYYY to YYYY-MM-DD
-      function formatDate(dateString) {
-        const parts = dateString.split('/');
-        if (parts.length === 3) {
-          return `${parts[2]}-${parts[1]}-${parts[0]}`;
-        } else {
-          console.error('Invalid date format:', dateString);
-          return dateString; // Return original date string if format is not as expected
-        }
-      }
-      </script> 
+    </script>
 
   </head>
 
