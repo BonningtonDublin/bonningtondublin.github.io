@@ -18,13 +18,43 @@
       };
 
       socket.onmessage = function(event) {
-        console.log('Received message from server: ', event.data);
-        const message = JSON.parse(event.data);
+        console.log('Received message:', event.data);
 
-        if (message.name) document.getElementById('NAME').value = message.name;
-        if (message.room) document.getElementById('ROOM').value = message.room;
-        if (message.checkout) updateDateField(message.checkout);
+        // Check if the received data is a Blob
+        if (event.data instanceof Blob) {
+          // Handle Blob data (binary data) as needed
+          handleBlobData(event.data);
+        } else {
+          // Assume it's JSON and try to parse it
+          try {
+            const message = JSON.parse(event.data);
+            console.log('Parsed JSON:', message);
+            // Process and update UI with JSON data
+            updateUI(message);
+          } catch (error) {
+            console.error('Error parsing JSON:', error);
+          }
+        }
       };
+
+      function handleBlobData(blob) {
+        // Example: Convert Blob to a readable format (like text)
+        const reader = new FileReader();
+        reader.onload = function() {
+          const text = reader.result;
+          console.log('Blob converted to text:', text);
+          // Further processing based on your application's needs
+        };
+        reader.readAsText(blob);
+      }
+
+      function updateUI(data) {
+        // Update UI elements with data (example function)
+        document.getElementById('name').innerText = data.name;
+        document.getElementById('room').innerText = data.room;
+        updateDateField(data.checkout);
+      }
+
 
       socket.onerror = function(error) {
         console.error('WebSocket error: ', error);
@@ -55,7 +85,7 @@
           const formattedDate = formatDate(datePart);
           console.log(datePart);
           console.log(formattedDate);
-          document.getElementById('CHECK-OUT').value = formattedDate;
+          document.getElementById('CHECK-OUT').innerText = formattedDate;
         } else {
           console.error('Invalid date format received from server:', dateTimeString);
         }
