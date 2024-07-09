@@ -12,13 +12,14 @@
 
       socket.onopen = function() {
         console.log('WebSocket connection established.');
+        const clientId = getClientId();
+        socket.send(JSON.stringify({ register: clientId }));
       };
 
       socket.onmessage = function(event) {
         console.log('Received message from server: ', event.data);
         const message = JSON.parse(event.data);
 
-        // Process the received data and update your tablet UI
         if (message.name) document.getElementById('NAME').value = message.name;
         if (message.room) document.getElementById('ROOM').value = message.room;
         if (message.checkout) updateDateField(message.checkout); // Call function to update date field
@@ -36,36 +37,36 @@
         }
       };
 
-      // Function to format date from DD-MM-YYYY to YYYY-MM-DD
+      function getClientId() {
+        const userAgent = navigator.userAgent;
+        if (userAgent.includes('Android')) {
+          return 'tablet1'; // Samsung
+        } else if (userAgent.includes('iPad') || userAgent.includes('iPhone')) {
+          return 'tablet2'; // Apple
+        }
+        return 'unknown';
+      }
+
+      function updateDateField(dateTimeString) {
+        const dateTimeParts = dateTimeString.split(' ');
+        if (dateTimeParts.length > 0) {
+          const datePart = dateTimeParts[0];
+          const formattedDate = formatDate(datePart);
+          console.log(datePart);
+          console.log(formattedDate);
+          document.getElementById('CHECK-OUT').value = formattedDate;
+        } else {
+          console.error('Invalid date format received from server:', dateTimeString);
+        }
+      }
+
       function formatDate(dateString) {
         const parts = dateString.split('-');
         if (parts.length === 3) {
           return `${parts[2]}-${parts[1]}-${parts[0]}`;
         } else {
           console.error('Invalid date format:', dateString);
-          return dateString; // Return original date string if format is not as expected
-        }
-      }
-
-      // Function to update the date field
-      function updateDateField(dateTimeString) {
-        // Split dateTimeString into date and time parts
-        const dateTimeParts = dateTimeString.split(' ');
-
-        // Check if dateTimeParts array has at least 1 element
-        if (dateTimeParts.length > 0) {
-          // First element is the date part in DD-MM-YYYY format
-          const datePart = dateTimeParts[0];
-
-          // Convert datePart to YYYY-MM-DD format
-          const formattedDate = formatDate(datePart);
-          console.log(datePart);
-          console.log(formattedDate);
-
-          // Update the input field with the date
-          document.getElementById('CHECK-OUT').value = formattedDate;
-        } else {
-          console.error('Invalid date format received from server:', dateTimeString);
+          return dateString;
         }
       }
     </script>
