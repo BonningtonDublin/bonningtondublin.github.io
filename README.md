@@ -43,7 +43,14 @@
         reader.onload = function() {
           const text = reader.result;
           console.log('Blob converted to text:', text);
-          // Further processing based on your application's needs
+          try {
+              const message = JSON.parse(text);
+              console.log('Parsed JSON from Blob:', message);
+              // Process and update UI with JSON data
+              updateUI(message);
+            } catch (error) {
+              console.error('Error parsing JSON from Blob:', error);
+            }
         };
         reader.readAsText(blob);
       }
