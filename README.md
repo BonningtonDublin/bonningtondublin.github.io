@@ -9,11 +9,10 @@
 
     <script>
       const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
-      const clientId = '';
 
       socket.onopen = function() {
         console.log('WebSocket connection established.');
-        clientId = getClientId();
+        const clientId = getClientId();
         console.log(`Registering as: ${clientId}`);
         socket.send(JSON.stringify({ register: clientId }));
       };
