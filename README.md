@@ -9,7 +9,7 @@
 
     <script>
       const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
-      const clientId;
+      const clientId = '';
 
       socket.onopen = function() {
         console.log('WebSocket connection established.');
