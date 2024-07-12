@@ -9,10 +9,11 @@
 
     <script>
       const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
+      const clientId;
 
       socket.onopen = function() {
         console.log('WebSocket connection established.');
-        const clientId = getClientId();
+        clientId = getClientId();
         console.log(`Registering as: ${clientId}`);
         socket.send(JSON.stringify({ register: clientId }));
       };
@@ -56,9 +57,13 @@
       }
 
       function updateUI(data) {
-        if(data.name) document.getElementById('NAME').value = data.name;
-        if(data.room) document.getElementById('ROOM').value = data.room;
-        if(data.checkout) updateDateField(data.checkout);
+        if(data.target) {
+            if(clientId == data.target) {
+            if(data.name) document.getElementById('NAME').value = data.name;
+            if(data.room) document.getElementById('ROOM').value = data.room;
+            if(data.checkout) updateDateField(data.checkout);
+          }
+        }
       }
 
 
