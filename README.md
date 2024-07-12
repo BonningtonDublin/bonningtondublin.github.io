@@ -57,7 +57,7 @@
 
       function updateUI(data) {
         if(data.target) {
-            if(clientId == data.target) {
+            if(getClientId() == data.target) {
             if(data.name) document.getElementById('NAME').value = data.name;
             if(data.room) document.getElementById('ROOM').value = data.room;
             if(data.checkout) updateDateField(data.checkout);
