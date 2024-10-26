@@ -1,5 +1,9 @@
 .form-group, .form-control {
-    font-size: 23px;
+    font-size: 20px;
+  }
+
+  .form-group input[type='number'], .form-group input[type='text'] {
+    width: 15px;
   }
 
   input[type='radio'] {
