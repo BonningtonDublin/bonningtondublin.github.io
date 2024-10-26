@@ -79,9 +79,9 @@
     <div class="form-group row g-2">
       <input type="radio" id="GUEST" name="REASON" value="guest" style="margin-left: 15px;" checked>
       <label for="GUEST">Hotel Guest</label>
-      <input type="radio" id="BAR" name="REASON" value="BAR" style="margin-left: 15px;">
+      <input type="radio" id="BAR" name="REASON" value="BAR" style="margin-left: 30px;">
       <label for="BAR">Croft Bar / McGettigan's</label>
-      <input type="radio" id="OTHER" name="REASON" value="other" style="margin-left: 25px;">
+      <input type="radio" id="OTHER" name="REASON" value="other" style="margin-left: 30px;">
       <label for="OTHER">Other Reason</label>
     </div>
 
