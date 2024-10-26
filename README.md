@@ -3,8 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="reg.css">
-
   <style>
     /* Center the selection screen */
     #initialSelection {
@@ -15,7 +13,7 @@
       height: 100vh;
     }
     .hidden {
-      display: none; /* Ensures elements with this class are hidden */
+      display: none; /* Hides elements with this class */
     }
   </style>
 
@@ -28,6 +26,22 @@
       // Show specific fields based on the reason selected
       document.getElementById('GUEST-INFO').style.display = reason === 'guest' ? 'block' : 'none';
       document.getElementById('remarksSection').style.display = reason === 'other' ? 'block' : 'none';
+
+      // Display the "Change Reason" button
+      document.getElementById('changeReason').classList.remove('hidden');
+    }
+
+    function changeReason() {
+      // Reset form visibility and hide fields
+      document.getElementById('formContainer').classList.add('hidden');
+      document.getElementById('initialSelection').classList.remove('hidden');
+      
+      // Hide any specific sections within the form
+      document.getElementById('GUEST-INFO').style.display = 'none';
+      document.getElementById('remarksSection').style.display = 'none';
+
+      // Hide the "Change Reason" button
+      document.getElementById('changeReason').classList.add('hidden');
     }
   </script>
 </head>
@@ -107,6 +121,8 @@
         </div>
       </div>
     </form>
+    <!-- "Change Reason" Button -->
+    <button id="changeReason" class="btn btn-link hidden" onclick="changeReason()">Change Reason</button>
   </div>
 
   <!-- jQuery, Popper, and Bootstrap JS -->
