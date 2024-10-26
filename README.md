@@ -87,7 +87,7 @@
 
     <div id="GUEST-INFO">
       <div class="form-group row">
-        <label for="ROOM" class="col-sm-5">*Room Number:</label>
+        <label for="ROOM" class="col-sm-5" style="margin-left:40px">*Room Number:</label>
         <label for="CHECK-OUT" class="col-sm-5" style="margin-left:40px">*Check-Out Date:</label>
       </div>
       <div class="form-group row">
@@ -104,7 +104,7 @@
 
     <div class="row g-2 mb-3">
       <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" checked required>
-      <label class="form-check-label" for="CONFIRMED">
+      <label class="form-check-label" for="CONFIRMED" style="word-wrap:break-word; margin-left:20px">
         I confirm that the vehicle registration information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.
       </label>
     </div>
