@@ -111,7 +111,7 @@
 
     <div class="row g-2 mb-3">
       <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" checked required>
-      <label class="form-check-label" for="CONFIRMED">
+      <label class="form-check-label" for="CONFIRMED" style="margin-left:15px;">
         I confirm that the vehicle registration information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.
       </label>
     </div>
