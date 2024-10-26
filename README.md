@@ -1,6 +1,5 @@
 <html lang="en">
 <head>
-  <!-- Required meta tags and Bootstrap CSS -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,7 +15,7 @@
       height: 100vh;
     }
     .hidden {
-      display: none;
+      display: none; /* Ensures elements with this class are hidden */
     }
   </style>
 
@@ -28,7 +27,7 @@
 
       // Show specific fields based on the reason selected
       document.getElementById('GUEST-INFO').style.display = reason === 'guest' ? 'block' : 'none';
-      document.getElementById('OBSERVATIONS').parentElement.style.display = reason === 'other' ? 'block' : 'none';
+      document.getElementById('remarksSection').style.display = reason === 'other' ? 'block' : 'none';
     }
   </script>
 </head>
