@@ -122,13 +122,6 @@
   <!-- Internal Functions -->
   <script type="text/javascript" src="reg.js"></script>
 
-  <!-- Background container with overlay -->
-    <div class="background-container" id="backgroundContainer">
-      <div class="background-overlay"></div>
-    </div>
-
-    <!-- Form container -->
-    <div class="form-container">
 
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
     <div class="form-group">
@@ -205,7 +198,6 @@
       </div>
     </div>
   </form>
-  </div>
 </html>
 
 <script>
@@ -250,11 +242,4 @@ function submitText(){
       }, false)
     })
 })()
-
-// Set the background image dynamically with JavaScript
-document.body.style.backgroundImage = "url('images/B.png')"; // Replace with your image URL
-document.body.style.backgroundSize = "cover";
-document.body.style.backgroundPosition = "center";
-document.body.style.backgroundRepeat = "no-repeat";
-
 </script>
