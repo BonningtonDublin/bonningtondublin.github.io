@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -8,14 +9,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="reg.css">
 
-  <!-- WebSocket & Helper Functions -->
   <script>
     const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
 
-    socket.onopen = () => {
-      const clientId = getClientId();
-      socket.send(JSON.stringify({ register: clientId }));
-    };
+    socket.onopen = () => socket.send(JSON.stringify({ register: getClientId() }));
 
     socket.onmessage = (event) => {
       const data = event.data instanceof Blob ? handleBlobData(event.data) : JSON.parse(event.data);
@@ -47,7 +44,8 @@
 
     function getClientId() {
       const userAgent = navigator.userAgent.toLowerCase();
-      return userAgent.includes('android') ? 'samsung' : userAgent.includes('ipad') || userAgent.includes('iphone') || userAgent.includes('mac') ? 'ipad' : 'unknown';
+      return userAgent.includes('android') ? 'samsung' :
+             userAgent.includes('ipad') || userAgent.includes('iphone') || userAgent.includes('mac') ? 'ipad' : 'unknown';
     }
 
     function updateDateField(dateTimeString) {
@@ -63,13 +61,11 @@
 </head>
 
 <body>
-  <!-- Form Submission & Validation Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="reg.js"></script>
 
-  <!-- Form -->
   <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
     <div class="form-group">
       <label for="NAME">*Your Name:</label>
@@ -81,17 +77,17 @@
       <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
     </div>
 
-    <!-- Radio Buttons for Reason Selection -->
     <div class="form-group row g-2">
       <input type="radio" id="GUEST" name="REASON" value="guest" checked>
       <label for="GUEST">Hotel Guest</label>
-      <input type="radio" id="BAR" name="REASON" value="BAR">
-      <label for="BAR">Croft Bar / McGettigan's</label>
+      <input type="radio" id="CROFT" name="REASON" value="croft">
+      <label for="CROFT">Croft Bar</label>
+      <input type="radio" id="MCG" name="REASON" value="mcg">
+      <label for="MCG">McGettigan's</label>
       <input type="radio" id="OTHER" name="REASON" value="other">
       <label for="OTHER">Other Reason</label>
     </div>
 
-    <!-- Guest Information -->
     <div id="GUEST-INFO">
       <div class="form-group row">
         <label for="ROOM" class="col-sm-5">*Room Number:</label>
@@ -104,13 +100,11 @@
       </div>
     </div>
 
-    <!-- Additional Observations -->
     <div class="form-group">
       <label for="OBSERVATIONS">Remarks (Optional):</label>
       <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control" autocomplete="off" style="text-transform: capitalize;">
     </div>
 
-    <!-- Confirmation Checkbox -->
     <div class="row g-2 mb-3">
       <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" checked required>
       <label class="form-check-label" for="CONFIRMED">
@@ -119,10 +113,8 @@
     </div>
     <p class="ml-2">By submitting, you agree to the terms stated above.</p>
 
-    <!-- Submit Modal Trigger -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#submitModal" onClick="submitText()">SUBMIT</button>
 
-    <!-- Modal -->
     <div class="modal fade" id="submitModal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -143,7 +135,6 @@
   </form>
 
   <script>
-    // Add info to modal
     function submitText() {     
       const reason = $("input[name='REASON']:checked").val();
       let html = reason === 'guest' 
@@ -152,7 +143,6 @@
       $("#bodyModal").html(html);
     }
 
-    // JavaScript for validation
     (function () {
       'use strict';
       const forms = document.querySelectorAll('.needs-validation');
