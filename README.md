@@ -102,7 +102,7 @@
       </div>
       <div class="form-group row mt-3" style="margin-left:5px" >
         <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" required hidden>
-        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="margin-left:5px" required>
+        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="margin-left:1px" required>
       </div>
     </div>
 
