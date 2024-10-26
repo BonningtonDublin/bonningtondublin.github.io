@@ -77,18 +77,18 @@
     </div>
 
     <div class="form-group row g-2">
-      <input type="radio" id="GUEST" name="REASON" value="guest" checked>
+      <input type="radio" id="GUEST" name="REASON" value="guest" style="margin-left: 15px;" checked>
       <label for="GUEST">Hotel Guest</label>
-      <input type="radio" id="BAR" name="REASON" value="BAR">
+      <input type="radio" id="BAR" name="REASON" value="BAR" style="margin-left: 15px;">
       <label for="BAR">Croft Bar / McGettigan's</label>
-      <input type="radio" id="OTHER" name="REASON" value="other">
+      <input type="radio" id="OTHER" name="REASON" value="other" style="margin-left: 15px;">
       <label for="OTHER">Other Reason</label>
     </div>
 
     <div id="GUEST-INFO">
       <div class="form-group row">
-        <label for="ROOM" class="col-sm-5" style="margin-left:40px">*Room Number:</label>
-        <label for="CHECK-OUT" class="col-sm-5" style="margin-left:40px">*Check-Out Date:</label>
+        <label for="ROOM" class="col-sm-5">*Room Number:</label>
+        <label for="CHECK-OUT" class="col-sm-5" style="margin-left:80px">*Check-Out Date:</label>
       </div>
       <div class="form-group row">
         <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-5" autocomplete="off" required>
