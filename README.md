@@ -122,6 +122,8 @@
   <!-- Internal Functions -->
   <script type="text/javascript" src="reg.js"></script>
 
+  <!-- Overlay element for faded effect -->
+  <div class="background-overlay"></div>
 
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
     <div class="form-group">
