@@ -18,24 +18,18 @@ document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
     document.getElementById('CHECK-OUT').value = '';
     document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
   });
-  $("#CROFT").click(function(){
+  $("#CROFT_MCG").click(function(){
     $("#GUEST-INFO").hide();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDate;
-    document.getElementById('OBSERVATIONS').value = 'Croft Bar';
-  });
-  $("#MCG").click(function(){
-    $("#GUEST-INFO").hide();
-    document.getElementById('ROOM').required = false;
-    document.getElementById('CHECK-OUT').value = minDate;
-    document.getElementById('OBSERVATIONS').value = "McGettigan's";
+    document.getElementById('OBSERVATIONS').value = "Croft Bar / McGettigan's";
   });
   $("#OTHER").click(function(){
     $("#GUEST-INFO").hide();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDate;
     document.getElementById('OBSERVATIONS').required = true;
-    document.getElementById('OBSERVATIONS').value = "Event | Meeting | ";
+    document.getElementById('OBSERVATIONS').value = "Event | Meeting | Other";
   });
 });
 
