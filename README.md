@@ -81,7 +81,7 @@
         <input type="radio" id="GUEST" name="REASON" value="guest" class="form-check-input" checked>
         <label class="form-check-label" for="GUEST">Hotel Guest</label>
         <input type="radio" id="CROFT_MCG" name="REASON" value="croft_mcgettigans" class="form-check-input" style="margin-left:15px;">
-        <label class="form-check-label" for="CROFT_MCG" style="margin-left:25px;">Croft Bar or McGetigan's</label>
+        <label class="form-check-label" for="CROFT_MCG" style="margin-left:40px;">Croft Bar or McGetigan's</label>
       </div>
       <div class="form-check">
         <input type="radio" id="OTHER" name="REASON" value="other" class="form-check-input">
