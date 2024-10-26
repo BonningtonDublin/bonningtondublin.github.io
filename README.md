@@ -84,7 +84,7 @@
       </div>
       <div class="form-check">
         <input type="radio" id="CROFT_MCG" name="REASON" value="croft_mcgettigans" class="form-check-input">
-        <label class="form-check-label" for="CROFT_MCG">Croft Bar & McGetigan's</label>
+        <label class="form-check-label" for="CROFT_MCG">Croft Bar or McGetigan's</label>
       </div>
       <div class="form-check">
         <input type="radio" id="OTHER" name="REASON" value="other" class="form-check-input">
@@ -102,7 +102,7 @@
       </div>
       <div class="form-group row mt-3">
         <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" style="margin-left:15px" required hidden>
-        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="margin-left:15px" required>
+        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="margin-left:5px" required>
       </div>
     </div>
 
