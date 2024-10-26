@@ -81,7 +81,7 @@
       <label for="GUEST">Hotel Guest</label>
       <input type="radio" id="BAR" name="REASON" value="BAR" style="margin-left: 15px;">
       <label for="BAR">Croft Bar / McGettigan's</label>
-      <input type="radio" id="OTHER" name="REASON" value="other" style="margin-left: 15px;">
+      <input type="radio" id="OTHER" name="REASON" value="other" style="margin-left: 25px;">
       <label for="OTHER">Other Reason</label>
     </div>
 
