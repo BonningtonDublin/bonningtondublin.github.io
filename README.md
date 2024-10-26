@@ -77,7 +77,6 @@
     </div>
 
     <div class="form-group">
-      <label>Reason:</label>
       <div class="form-check">
         <input type="radio" id="GUEST" name="REASON" value="guest" class="form-check-input" checked>
         <label class="form-check-label" for="GUEST">Hotel Guest</label>
