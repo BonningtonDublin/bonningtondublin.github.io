@@ -48,7 +48,7 @@
 
 <body>
   <!-- Initial Selection Screen -->
-  <div id="initialSelection">
+  <div id="initialSelection" class="hidden">
     <h3>Select your reason for visit:</h3>
     <button class="btn btn-primary btn-lg my-2" onclick="showForm('guest')">Hotel Guest</button>
     <button class="btn btn-primary btn-lg my-2" onclick="showForm('croft')">Croft Bar / McGettigans</button>
