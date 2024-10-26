@@ -100,9 +100,9 @@
       <div class="form-group row">
         <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-5" required>
       </div>
-      <div class="form-group row mt-3" style="margin-left:5px" >
+      <div class="form-group row mt-3" style="margin-left:2px" >
         <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" required hidden>
-        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" style="margin-left:1px" required>
+        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" required>
       </div>
     </div>
 
