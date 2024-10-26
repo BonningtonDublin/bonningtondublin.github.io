@@ -242,4 +242,11 @@ function submitText(){
       }, false)
     })
 })()
+
+// Set the background image dynamically with JavaScript
+document.body.style.backgroundImage = "url('images/B.png')"; // Replace with your image URL
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+
 </script>
