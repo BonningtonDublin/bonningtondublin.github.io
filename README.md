@@ -122,6 +122,14 @@
   <!-- Internal Functions -->
   <script type="text/javascript" src="reg.js"></script>
 
+  <!-- Background container with overlay -->
+    <div class="background-container" id="backgroundContainer">
+      <div class="background-overlay"></div>
+    </div>
+
+    <!-- Form container -->
+    <div class="form-container">
+
 <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
     <div class="form-group">
       <label for="NAME">*Your Name:</label>
@@ -197,6 +205,7 @@
       </div>
     </div>
   </form>
+  </div>
 </html>
 
 <script>
