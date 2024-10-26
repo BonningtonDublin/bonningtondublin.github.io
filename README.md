@@ -86,10 +86,8 @@
     <div class="form-group row g-2">
       <input type="radio" id="GUEST" name="REASON" value="guest" checked>
       <label for="GUEST">Hotel Guest</label>
-      <input type="radio" id="CROFT" name="REASON" value="croft">
-      <label for="CROFT">Croft Bar</label>
-      <input type="radio" id="MCG" name="REASON" value="mcg">
-      <label for="MCG">McGettigan's</label>
+      <input type="radio" id="BAR" name="REASON" value="BAR">
+      <label for="BAR">Croft Bar / McGettigan's</label>
       <input type="radio" id="OTHER" name="REASON" value="other">
       <label for="OTHER">Other Reason</label>
     </div>
