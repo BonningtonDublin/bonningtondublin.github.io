@@ -64,7 +64,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div class="container">
-  <h2 class="mx-auto">REGISTER YOUR CAR</h2>
+  <h2 class="text-center">REGISTER YOUR CAR</h2>
   
   <!-- Step 1: Select Reason for Visit with Buttons -->
   <div id="reason-buttons">
@@ -75,8 +75,8 @@
 
   <!-- Change Reason and Submit Button -->
   <div id="change-reason" style="display: none;">
-    <button type="button" class="btn btn-warning mb-3 btn-lg" onclick="changeReason()">Change Reason for Visit</button>
-    <button type="button" class="btn btn-primary mb-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+    <button type="button" class="btn btn-warning mb-3 md-2 btn-lg" onclick="changeReason()">Change Reason for Visit</button>
+    <button type="button" class="btn btn-primary mb-3 md-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
   </div>
 
   <!-- Main Form -->
