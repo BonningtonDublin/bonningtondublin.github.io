@@ -39,3 +39,7 @@
       .checkbox label {
           margin-bottom: 20px !important;
       }
+
+      #main-fields{
+        margin-top: 15px;
+      }
