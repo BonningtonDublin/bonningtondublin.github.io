@@ -68,15 +68,15 @@
   
   <!-- Step 1: Select Reason for Visit with Buttons -->
   <div id="reason-buttons">
-    <button type="button" class="btn btn-outline-primary btn-block mb-4" onclick="selectReason('guest')">Hotel Guest</button>
-    <button type="button" class="btn btn-outline-secondary btn-block mb-4" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGettigan's</button>
-    <button type="button" class="btn btn-outline-info btn-block mb-4" onclick="selectReason('other')">Other Reason</button>
+    <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" onclick="selectReason('guest')">Hotel Guest</button>
+    <button type="button" class="btn btn-outline-secondary btn-lg btn-block mb-3" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGettigan's</button>
+    <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" onclick="selectReason('other')">Other Reason</button>
   </div>
 
   <!-- Change Reason and Submit Button -->
   <div id="change-reason" style="display: none;">
-    <button type="button" class="btn btn-warning mb-3 md-2 btn-lg" onclick="changeReason()">Change Reason for Visit</button>
-    <button type="button" class="btn btn-primary mb-3 md-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+    <button type="button" class="btn btn-warning mb-2 md-2 btn-lg" onclick="changeReason()">Change Reason for Visit</button>
+    <button type="button" class="btn btn-primary mb-2 md-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
   </div>
 
   <!-- Main Form -->
