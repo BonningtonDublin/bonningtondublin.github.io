@@ -75,8 +75,8 @@
 
   <!-- Change Reason and Submit Button -->
   <div id="change-reason" style="display: none;">
-    <button type="button" class="btn btn-warning mb-3" onclick="changeReason()">Change Reason for Visit</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+    <button type="button" class="btn btn-warning mb-3 btn-lg" onclick="changeReason()">Change Reason for Visit</button>
+    <button type="button" class="btn btn-primary mb-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
   </div>
 
   <!-- Main Form -->
@@ -118,7 +118,7 @@
     <div id="confirm-section">
       <div class="form-check mb-3">
         <input type="checkbox" id="CONFIRMED" name="CONFIRMED" class="form-check-input" value="Yes" checked required>
-        <label for="CONFIRMED" class="form-check-label">I confirm that the vehicle registration information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.</label>
+        <label for="CONFIRMED" class="form-check-label">I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.</label>
         <p class="ml-2">By submitting, you agree to the terms stated above.</p>
       </div>      
     </div>
