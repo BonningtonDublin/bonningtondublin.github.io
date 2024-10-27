@@ -67,7 +67,7 @@
   <h2 class="text-center">REGISTER YOUR CAR</h2>
   
   <!-- Step 1: Select Reason for Visit with Buttons -->
-  <div id="reason-buttons">
+  <div id="reason-buttons" class="d-grid gap-2">
     <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" onclick="selectReason('guest')">Hotel Guest</button>
     <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGettigan's</button>
     <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" onclick="selectReason('other')">Other Reason</button>
