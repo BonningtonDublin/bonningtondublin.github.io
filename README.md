@@ -188,13 +188,13 @@
     } else if(reason === "croft_mcgettigans") {
       document.getElementById("other-fields").style.display = "block";
       document.getElementById("guest-fields").style.display = "none";
-      document.getElementById('CHECK-OUT').value = minDateStr;
-      document.getElementById('OBSERVATIONS').value = "Croft Bar / McGettigan's";
+      document.getElementById("CHECK-OUT").value = minDateStr;
+      document.getElementById("OBSERVATIONS").value = "Croft Bar / McGettigan's";
     } else if (reason === "other") {
       document.getElementById("other-fields").style.display = "block";
       document.getElementById("guest-fields").style.display = "none";
-      document.getElementById('CHECK-OUT').value = minDateStr;
-      document.getElementById('OBSERVATIONS').value = "Event | Meeting | Other";
+      document.getElementById("CHECK-OUT").value = minDateStr;
+      document.getElementById("OBSERVATIONS").value = 'Event | Meeting | Other';
     } else {
       document.getElementById("guest-fields").style.display = "none";
       document.getElementById("other-fields").style.display = "none";
