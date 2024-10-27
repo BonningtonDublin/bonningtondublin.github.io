@@ -86,18 +86,18 @@
     <div id="main-fields">
       <div class="form-group">
         <div class="row">
-          <div class="col">
+          <div class="col md-2">
             <label for="NAME">*Your Name:</label>
           </div>
-          <div class="col">
+          <div class="col md-2">
             <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col md-2">
             <input type="text" id="NAME" name="NAME" class="form-control" required>
           </div>
-          <div class="row">
+          <div class="col md-2">
             <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
           </div>
         </div>
@@ -107,13 +107,23 @@
     <!-- Conditional Fields -->
     <div id="guest-fields" class="conditional-fields">
       <div class="form-group">
-        <label for="ROOM">*Room Number:</label>
-        <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
-      </div>
-      <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" required hidden>
-      <div class="form-group">
-        <label for="CHECK-OUT">*Check-Out Date:</label>
-        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
+        <div class="row">
+          <div class="col">
+            <label for="ROOM">*Room Number:</label>
+          </div>
+          <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" required hidden>
+          <div class="col">
+            <label for="CHECK-OUT">*Check-Out Date:</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
+          </div>      
+          <div class="col">
+            <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
+          </div>
+        </div>
       </div>
     </div>
     
