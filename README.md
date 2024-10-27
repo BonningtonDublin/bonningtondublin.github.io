@@ -7,6 +7,7 @@
   <style>
     .conditional-fields, #main-fields, #confirm-section { display: none; }
   </style>
+  <script src="reg.js"></script>
 </head>
 <body>
 
