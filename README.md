@@ -65,150 +65,98 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="reg.js"></script>
 
-  <div class="container">
-  <h2>Visit Registration</h2>
-  
-  <!-- Step 1: Select Reason for Visit with Buttons -->
-  <div id="reason-buttons">
-    <button type="button" class="btn btn-outline-primary btn-block mb-2" onclick="selectReason('guest')">Hotel Guest</button>
-    <button type="button" class="btn btn-outline-secondary btn-block mb-2" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGetigan's</button>
-    <button type="button" class="btn btn-outline-info btn-block mb-2" onclick="selectReason('other')">Other Reason</button>
-  </div>
+  <form action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+      <label for="NAME">*Your Name:</label>
+      <input type="text" id="NAME" name="NAME" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
+    </div>
 
-  <!-- Change Reason Button -->
-  <div id="change-reason" style="display: none;">
-    <button type="button" class="btn btn-warning mb-3" onclick="changeReason()">Change Reason</button>
-  </div>
+    <div class="form-group">
+      <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
+      <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
+    </div>
 
-  <!-- Main Form -->
-  <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
-    
-    <!-- Common Fields: Name and Car Registration -->
-    <div id="main-fields">
-      <div class="form-group">
-        <label for="NAME">*Your Name:</label>
-        <input type="text" id="NAME" name="NAME" class="form-control" required>
+    <div class="form-group">
+      <div class="form-check">
+        <input type="radio" id="GUEST" name="REASON" value="guest" class="form-check-input" checked>
+        <label class="form-check-label" for="GUEST">Hotel Guest</label>
+        <input type="radio" id="CROFT_MCG" name="REASON" value="croft_mcgettigans" class="form-check-input" style="margin-left:15px;">
+        <label class="form-check-label" for="CROFT_MCG" style="margin-left:35px;">Croft Bar or McGetigan's</label>
       </div>
-      <div class="form-group">
-        <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
-        <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+      <div class="form-check">
+        <input type="radio" id="OTHER" name="REASON" value="other" class="form-check-input">
+        <label class="form-check-label" for="OTHER">Other Reason</label>
       </div>
     </div>
 
-    <!-- Conditional Fields -->
-    <div id="guest-fields" class="conditional-fields">
-      <div class="form-group">
-        <label for="ROOM">*Room Number:</label>
-        <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
+    <div id="GUEST-INFO" class="mb-3">
+      <div class="form-group row">
+        <label for="ROOM" class="col-sm-5">*Room Number:</label>
+        <label for="CHECK-OUT" class="col-sm-5">*Check-Out Date:</label>
       </div>
-      <div class="form-group">
-        <label for="CHECK-OUT">*Check-Out Date:</label>
-        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
-      </div>
-    </div>
-    
-    <div id="other-fields" class="conditional-fields">
-      <div class="form-group">
-        <label for="OBSERVATIONS">Remarks (Optional):</label>
-        <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control">
+      <div class="form-group row">
+        <input type="number" min="80" max="5118" id="ROOM" name="ROOM" class="form-control col-sm-4" style="margin-left:15px;margin-right:15px;" required>
+        <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" required hidden>
+        <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control col-sm-5" required>
       </div>
     </div>
 
-    <!-- Confirmation Checkbox and Submit Button -->
-    <div id="confirm-section">
-      <div class="form-check mb-3">
-        <input type="checkbox" id="CONFIRMED" name="CONFIRMED" class="form-check-input" required>
-        <label for="CONFIRMED" class="form-check-label">I confirm that the information provided is accurate.</label>
+    <div class="form-group">
+      <label for="OBSERVATIONS">Remarks (Optional):</label>
+      <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control" autocomplete="off" style="text-transform: capitalize;">
+    </div>
+
+    <div class="row g-2 mb-3">
+      <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" checked required>
+      <label class="form-check-label" for="CONFIRMED" style="margin-left:15px;">
+        I confirm that the vehicle registration information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.
+      </label>
+    </div>
+    <p class="ml-2">By submitting, you agree to the terms stated above.</p>
+
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#submitModal" onClick="submitText()">SUBMIT</button>
+
+    <div class="modal fade" id="submitModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="submitModalLabel">Please confirm your information!</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="bodyModal"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Back</button>
+            <button type="submit" class="btn btn-primary btn-lg">Confirm & Save</button>
+          </div>
+        </div>
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
     </div>
   </form>
-</div>
 
-<!-- Modal for Confirmation -->
-<div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="submitModalLabel">Please confirm your information!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-        <button type="button" class="btn btn-primary" onclick="submitForm()">Confirm & Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Script to Toggle Fields and Populate Modal -->
-<script>
-  let selectedReason = "";
-
-  function selectReason(reason) {
-    selectedReason = reason;
-    document.getElementById("reason-buttons").style.display = "none";
-    document.getElementById("main-fields").style.display = "block";
-    document.getElementById("change-reason").style.display = "block";
-    document.getElementById("confirm-section").style.display = "block";
-    
-    if (reason === "guest") {
-      document.getElementById("guest-fields").style.display = "block";
-      document.getElementById("other-fields").style.display = "none";
-      document.getElementById("ROOM").required = true;
-      document.getElementById("CHECK-OUT").required = true;
-    } else if (reason === "other") {
-      document.getElementById("other-fields").style.display = "block";
-      document.getElementById("guest-fields").style.display = "none";
-      document.getElementById("OBSERVATIONS").required = false;
-    } else {
-      document.getElementById("guest-fields").style.display = "none";
-      document.getElementById("other-fields").style.display = "none";
+  <script>
+    function submitText() {     
+      const reason = $("input[name='REASON']:checked").val();
+      let html = reason === 'guest' 
+        ? `Car Registration: <div class='font-weight-bold'>${$("#CAR-REGISTRATION").val()}</div><br>Check-Out Date: <div class='font-weight-bold'>${$("#CHECK-OUT").val()}</div>`
+        : `Name: <div class='font-weight-bold'>${$("#NAME").val()}</div><br>Car Registration: <div class='font-weight-bold'>${$("#CAR-REGISTRATION").val()}</div><br>Remarks: <div class='font-weight-bold'>${$("#OBSERVATIONS").val()}</div>`;
+      $("#bodyModal").html(html);
     }
-  }
 
-  function changeReason() {
-    document.getElementById("reason-buttons").style.display = "block";
-    document.getElementById("main-fields").style.display = "none";
-    document.getElementById("change-reason").style.display = "none";
-    document.getElementById("confirm-section").style.display = "none";
-    document.getElementById("guest-fields").style.display = "none";
-    document.getElementById("other-fields").style.display = "none";
-  }
-
-  function populateModal() {
-    const name = document.getElementById("NAME").value;
-    const carRegistration = document.getElementById("CAR-REGISTRATION").value;
-    const room = document.getElementById("ROOM").value;
-    const checkout = document.getElementById("CHECK-OUT").value;
-    const remarks = document.getElementById("OBSERVATIONS").value;
-
-    let confirmationText = `<strong>Reason for Visit:</strong> ${selectedReason}<br>
-                            <strong>Name:</strong> ${name}<br>
-                            <strong>Car Registration:</strong> ${carRegistration}<br>`;
-    
-    if (selectedReason === "guest") {
-      confirmationText += `<strong>Room Number:</strong> ${room}<br>
-                           <strong>Check-Out Date:</strong> ${checkout}`;
-    } else if (selectedReason === "other") {
-      confirmationText += `<strong>Remarks:</strong> ${remarks}`;
-    }
-    
-    document.getElementById("modalBody").innerHTML = confirmationText;
-  }
-
-  function submitForm() {
-    document.getElementById("registration-form").submit();
-  }
-</script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-
-
+    (function () {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
 </body>
 </html>
