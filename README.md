@@ -184,12 +184,12 @@
       document.getElementById("other-fields").style.display = "block";
       document.getElementById("ROOM").required = true;
       document.getElementById("CHECK-OUT").required = true;
-      document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
+      document.getElementById("OBSERVATIONS").value = 'Hotel Guest';
     } else if(reason === "croft_mcgettigans") {
       document.getElementById("other-fields").style.display = "block";
       document.getElementById("guest-fields").style.display = "none";
       document.getElementById("CHECK-OUT").value = minDateStr;
-      document.getElementById("OBSERVATIONS").value = "Croft Bar / McGettigan's";
+      document.getElementById("OBSERVATIONS").value = 'Hotel Guest3';
     } else if (reason === "other") {
       document.getElementById("other-fields").style.display = "block";
       document.getElementById("guest-fields").style.display = "none";
