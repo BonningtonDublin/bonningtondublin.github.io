@@ -85,12 +85,22 @@
     <!-- Common Fields: Name and Car Registration -->
     <div id="main-fields">
       <div class="form-group">
-        <label for="NAME">*Your Name:</label>
-        <input type="text" id="NAME" name="NAME" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
-        <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+        <div class="row">
+          <div class="col">
+            <label for="NAME">*Your Name:</label>
+          </div>
+          <div class="col">
+            <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="text" id="NAME" name="NAME" class="form-control" required>
+          </div>
+          <div class="row">
+            <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -118,8 +128,7 @@
     <div id="confirm-section">
       <div class="form-check mb-3">
         <input type="checkbox" id="CONFIRMED" name="CONFIRMED" class="form-check-input" value="Yes" checked required>
-        <label for="CONFIRMED" class="form-check-label">I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.</label>
-        <p class="ml-2">By submitting, you agree to the terms stated above.</p>
+        <label for="CONFIRMED" class="form-check-label">I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.<br>By submitting, you agree to the terms stated above.</label>
       </div>      
     </div>
   </form>
