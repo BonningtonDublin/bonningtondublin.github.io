@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // Default setting for "OBSERVATIONS" (Remarks) based on default selection
+  // Default setting for "OBSERVATIONS" (Remarks)
   document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
 
   // Setting the CHECK-IN date to today's date
@@ -14,53 +14,67 @@ $(document).ready(function() {
   document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDateStr);
 
   // Event listeners for reason selection buttons
-  $("#reason-buttons button").click(function() {
-    const reason = $(this).text().toLowerCase();
+  $("#GUEST").click(function() {
+    setFieldsForGuest();
+  });
 
-    if (reason.includes("hotel guest")) {
-      setFieldsForGuest();
-    } else if (reason.includes("croft") || reason.includes("mcgettigan")) {
-      setFieldsForCroftMcGettigans();
-    } else if (reason.includes("other")) {
-      setFieldsForOtherReason();
-    }
+  $("#CROFT_MCG").click(function() {
+    setFieldsForCroftMcGettigans();
+  });
 
-    // Show main fields and confirm section after reason is selected
-    $("#main-fields, #confirm-section").show();
-    $("#reason-buttons").hide();
-    $("#change-reason").show();
+  $("#OTHER").click(function() {
+    setFieldsForOtherReason();
   });
 
   function setFieldsForGuest() {
-    // Show guest-specific fields and set requirements
-    $("#guest-fields").show();
+    $("#GUEST-INFO").show();
     document.getElementById('ROOM').required = true;
     document.getElementById('CHECK-OUT').value = '';
     document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
+    toggleMainFields(true);
   }
 
   function setFieldsForCroftMcGettigans() {
-    // Hide guest-specific fields and set default values for Croft Bar/McGettigan's
-    $("#guest-fields").hide();
+    $("#GUEST-INFO").hide();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDateStr;
     document.getElementById('OBSERVATIONS').value = "Croft Bar / McGettigan's";
+    toggleMainFields(true);
   }
 
   function setFieldsForOtherReason() {
-    // Hide guest-specific fields and set default values for other reasons
-    $("#guest-fields").hide();
+    $("#GUEST-INFO").hide();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDateStr;
     document.getElementById('OBSERVATIONS').value = "Event | Meeting | Other";
+    toggleMainFields(true);
   }
 
-  // Change reason function to reset values
-  $("#change-reason button").click(function() {
+  function toggleMainFields(show) {
+    if (show) {
+      $("#main-fields").show();
+      $("#change-reason").show();
+      $("#submit-button").show();
+    } else {
+      $("#main-fields").hide();
+      $("#change-reason").hide();
+      $("#submit-button").hide();
+    }
+  }
+
+  $("#change-reason-button").click(function() {
+    toggleMainFields(false);
     $("#reason-buttons").show();
-    $("#main-fields, #confirm-section, #guest-fields").hide();
-    $("#OBSERVATIONS").value = 'Hotel Guest';
+    resetFields();
   });
+
+  function resetFields() {
+    $("#NAME").val('');
+    $("#CAR-REGISTRATION").val('');
+    $("#OBSERVATIONS").val('Hotel Guest');
+    $("#ROOM").val('');
+    document.getElementById('CHECK-OUT').value = '';
+  }
 });
 
 // Helper function to format date to "YYYY-MM-DDTHH:MM"
