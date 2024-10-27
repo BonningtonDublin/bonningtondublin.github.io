@@ -1,6 +1,5 @@
 $(document).ready(function() {
-
-  // Default setting for "OBSERVATIONS" based on default selection
+  // Default setting for "OBSERVATIONS" (Remarks) based on default selection
   document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
 
   // Setting the CHECK-IN date to today's date
@@ -25,12 +24,16 @@ $(document).ready(function() {
     } else if (reason.includes("other")) {
       setFieldsForOtherReason();
     }
+
+    // Show main fields and confirm section after reason is selected
+    $("#main-fields, #confirm-section").show();
+    $("#reason-buttons").hide();
+    $("#change-reason").show();
   });
 
   function setFieldsForGuest() {
     // Show guest-specific fields and set requirements
     $("#guest-fields").show();
-    $("#other-fields").hide();
     document.getElementById('ROOM').required = true;
     document.getElementById('CHECK-OUT').value = '';
     document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
@@ -39,7 +42,6 @@ $(document).ready(function() {
   function setFieldsForCroftMcGettigans() {
     // Hide guest-specific fields and set default values for Croft Bar/McGettigan's
     $("#guest-fields").hide();
-    $("#other-fields").hide();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDateStr;
     document.getElementById('OBSERVATIONS').value = "Croft Bar / McGettigan's";
@@ -48,7 +50,6 @@ $(document).ready(function() {
   function setFieldsForOtherReason() {
     // Hide guest-specific fields and set default values for other reasons
     $("#guest-fields").hide();
-    $("#other-fields").show();
     document.getElementById('ROOM').required = false;
     document.getElementById('CHECK-OUT').value = minDateStr;
     document.getElementById('OBSERVATIONS').value = "Event | Meeting | Other";
@@ -57,7 +58,7 @@ $(document).ready(function() {
   // Change reason function to reset values
   $("#change-reason button").click(function() {
     $("#reason-buttons").show();
-    $("#main-fields, #confirm-section, #guest-fields, #other-fields").hide();
+    $("#main-fields, #confirm-section, #guest-fields").hide();
     $("#OBSERVATIONS").value = 'Hotel Guest';
   });
 });
