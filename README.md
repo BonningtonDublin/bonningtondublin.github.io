@@ -156,7 +156,7 @@
         </button>
       </div>
       <div class="modal-body" id="modalBody"></div>
-      <div class="modal-footer">
+      <div class="modal-footer d-grid gap-2">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
         <button type="button" class="btn btn-primary" onclick="submitForm()">Confirm & Save</button>
       </div>
@@ -236,8 +236,7 @@
     const checkout = document.getElementById("CHECK-OUT").value;
     const remarks = document.getElementById("OBSERVATIONS").value;
 
-    let confirmationText = `<strong>Reason for Visit:</strong> ${selectedReason}<br>
-                            <strong>Name:</strong> ${name}<br>
+    let confirmationText = `<strong>Name:</strong> ${name}<br>
                             <strong>Car Registration:</strong> ${carRegistration}<br>`;
     
     if (selectedReason === "guest") {
