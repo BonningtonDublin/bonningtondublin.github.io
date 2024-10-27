@@ -68,7 +68,7 @@
   
   <!-- Step 1: Select Reason for Visit with Buttons -->
   <div id="reason-buttons" class="d-grid gap-2">
-    <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3 hidden"></button>
+    <button type="button" class="btn btn-lg btn-block mb-3 hidden"></button>
     <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" onclick="selectReason('guest')">Hotel Guest</button>
     <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGettigan's</button>
     <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" onclick="selectReason('other')">Other Reason</button>
@@ -76,6 +76,7 @@
 
   <!-- Change Reason and Submit Button -->
   <div id="change-reason" style="display: none;" class="d-grid gap-2">
+    <button type="button" class="btn btn-lg btn-block hidden"></button>
     <button type="button" class="btn btn-outline-secondary btn-block mb-1" onclick="changeReason()">Change Reason for Visit</button>
     <button type="button" class="btn btn-primary btn-block mb-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
   </div>
