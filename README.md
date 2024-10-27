@@ -81,7 +81,7 @@
   </div>
 
   <!-- Main Form -->
-  <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" novalidate>
+  <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" novalidate>
     
     <!-- Common Fields: Name and Car Registration -->
     <div id="main-fields">

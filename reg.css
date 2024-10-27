@@ -20,26 +20,21 @@ input[type='radio']:before {
   border-radius: 50%;
 }
 
-   input[type="radio"]:checked:before {
-          background: green;
+input[type="radio"]:checked:before {
+  background: green;
+}
 
-      }
+input[type="radio"]:checked {
+  border-color:green;
+}
 
-      input[type="radio"]:checked {
-        border-color:green;
-      }
+.role {
+  width: 37%;
+  margin-right: 3%;
+  margin-left: 10px;
+  font-weight: normal;
+}
 
-      .role {
-          width: 37%;
-          margin-right: 3%;
-          margin-left: 10px;
-          font-weight: normal;
-      }
-
-      .checkbox label {
-          margin-bottom: 20px !important;
-      }
-
-      #registration-form{
-        margin-top: 15px;
-      }
+.checkbox label {
+  margin-bottom: 20px !important;
+}
