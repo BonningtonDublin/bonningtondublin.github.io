@@ -75,8 +75,8 @@
 
   <!-- Change Reason and Submit Button -->
   <div id="change-reason" style="display: none;" class="d-grid gap-2">
-    <button type="button" class="btn btn-outline-secondary mb-1" onclick="changeReason()">Change Reason for Visit</button>
-    <button type="button" class="btn btn-primary mb-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+    <button type="button" class="btn btn-outline-secondary btn-block mb-1" onclick="changeReason()">Change Reason for Visit</button>
+    <button type="button" class="btn btn-primary btn-block mb-3 btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
   </div>
 
   <!-- Main Form -->
