@@ -169,18 +169,7 @@
   let selectedReason = "";
   document.getElementById('OBSERVATIONS').value = '';
 
-  // Setting the CHECK-IN date to today's date
-  const currentTime = new Date();
-  const today = convertToDateTimeLocalString(currentTime);
-  document.getElementById('CHECK-IN').value = today;
-
-  // Set minimum CHECK-OUT date to 1 day from today
-  let minDate = new Date();
-  minDate.setDate(minDate.getDate() + 1);
-  const minDateStr = minDate.toISOString().split("T")[0];
-  document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDateStr);
-
-  // Helper function to format date to "YYYY-MM-DDTHH:MM"
+// Helper function to format date to "YYYY-MM-DDTHH:MM"
   const convertToDateTimeLocalString = (date) => {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -190,6 +179,16 @@
 
     return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
+
+  // Set current date and time to CHECK-IN field
+  const currentTime = new Date();
+  const today = convertToDateTimeLocalString(currentTime);
+  document.getElementById('CHECK-IN').value = today;
+
+  // Set minimum CHECK-OUT date to 1 day from today
+  let minDate = new Date();
+  minDate.setDate(minDate.getDate() + 1);
+  const minDateStr = minDate.toISOString().split("T")[0];
 
   function selectReason(reason) {
     selectedReason = reason;
