@@ -1,39 +1,68 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-//set observations as hotel guest by default
-document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
+  // Default setting for "OBSERVATIONS" based on default selection
+  document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
 
-//Check-in date as today
-const currentTime = new Date();
-const today = convertToDateTimeLocalString(currentTime);
-document.getElementById('CHECK-IN').value = today;
+  // Setting the CHECK-IN date to today's date
+  const currentTime = new Date();
+  const today = convertToDateTimeLocalString(currentTime);
+  document.getElementById('CHECK-IN').value = today;
 
-//Minimun check-out date from 1 day ahead
-var minDate = new Date(currentTime.setDate(currentTime.getDate() + 1)).toISOString().split("T")[0];
-document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDate);
+  // Set minimum CHECK-OUT date to 1 day from today
+  let minDate = new Date();
+  minDate.setDate(minDate.getDate() + 1);
+  const minDateStr = minDate.toISOString().split("T")[0];
+  document.getElementsByName("CHECK-OUT")[0].setAttribute('min', minDateStr);
 
-  $("#GUEST").click(function(){
-    $("#GUEST-INFO").show();
+  // Event listeners for reason selection buttons
+  $("#reason-buttons button").click(function() {
+    const reason = $(this).text().toLowerCase();
+
+    if (reason.includes("hotel guest")) {
+      setFieldsForGuest();
+    } else if (reason.includes("croft") || reason.includes("mcgettigan")) {
+      setFieldsForCroftMcGettigans();
+    } else if (reason.includes("other")) {
+      setFieldsForOtherReason();
+    }
+  });
+
+  function setFieldsForGuest() {
+    // Show guest-specific fields and set requirements
+    $("#guest-fields").show();
+    $("#other-fields").hide();
     document.getElementById('ROOM').required = true;
     document.getElementById('CHECK-OUT').value = '';
     document.getElementById('OBSERVATIONS').value = 'Hotel Guest';
-  });
-  $("#CROFT_MCG").click(function(){
-    $("#GUEST-INFO").hide();
+  }
+
+  function setFieldsForCroftMcGettigans() {
+    // Hide guest-specific fields and set default values for Croft Bar/McGettigan's
+    $("#guest-fields").hide();
+    $("#other-fields").hide();
     document.getElementById('ROOM').required = false;
-    document.getElementById('CHECK-OUT').value = minDate;
+    document.getElementById('CHECK-OUT').value = minDateStr;
     document.getElementById('OBSERVATIONS').value = "Croft Bar / McGettigan's";
-  });
-  $("#OTHER").click(function(){
-    $("#GUEST-INFO").hide();
+  }
+
+  function setFieldsForOtherReason() {
+    // Hide guest-specific fields and set default values for other reasons
+    $("#guest-fields").hide();
+    $("#other-fields").show();
     document.getElementById('ROOM').required = false;
-    document.getElementById('CHECK-OUT').value = minDate;
-    document.getElementById('OBSERVATIONS').required = true;
+    document.getElementById('CHECK-OUT').value = minDateStr;
     document.getElementById('OBSERVATIONS').value = "Event | Meeting | Other";
+  }
+
+  // Change reason function to reset values
+  $("#change-reason button").click(function() {
+    $("#reason-buttons").show();
+    $("#main-fields, #confirm-section, #guest-fields, #other-fields").hide();
+    $("#OBSERVATIONS").value = 'Hotel Guest';
   });
 });
 
-// getFullYear, getMonth, getDate, getHours, getMinutes all return values of local time.
+// Helper function to format date to "YYYY-MM-DDTHH:MM"
 const convertToDateTimeLocalString = (date) => {
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -42,4 +71,4 @@ const convertToDateTimeLocalString = (date) => {
   const minutes = date.getMinutes().toString().padStart(2, "0");
 
   return `${year}-${month}-${day}T${hours}:${minutes}`;
-}
+};
