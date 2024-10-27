@@ -158,7 +158,7 @@
       <div class="modal-body" id="modalBody"></div>
       <div class="modal-footer d-grid gap-2">
         <button type="button" class="btn-secondary" data-dismiss="modal">Back</button>
-        <button type="button" class="btn-primary" onclick="submitForm()">Confirm & Save</button>
+        <button type="button" class="btn btn-primary" onclick="submitForm()">Confirm & Save</button>
       </div>
     </div>
   </div>
