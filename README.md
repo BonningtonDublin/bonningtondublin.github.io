@@ -1,48 +1,41 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-  <title>REGISTER YOUR CAR</title>
+  <title>Visit Registration</title>
   <style>
-    .conditional-fields { display: none; }
+    .conditional-fields, #main-fields { display: none; }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>REGISTER YOUR CAR</h2>
+  <h2>Visit Registration</h2>
   
+  <!-- Step 1: Select Reason for Visit with Buttons -->
+  <div id="reason-buttons">
+    <button type="button" class="btn btn-outline-primary btn-block mb-2" onclick="selectReason('guest')">Hotel Guest</button>
+    <button type="button" class="btn btn-outline-secondary btn-block mb-2" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGetigan's</button>
+    <button type="button" class="btn btn-outline-info btn-block mb-2" onclick="selectReason('other')">Other Reason</button>
+  </div>
+
   <!-- Main Form -->
   <form id="registration-form" class="needs-validation" novalidate>
     
-    <!-- Step 1: Select Reason for Visit -->
-    <div class="form-group">
-      <label><strong>Select Reason for Visit:</strong></label>
-      <div class="form-check">
-        <input type="radio" id="GUEST" name="REASON" value="guest" class="form-check-input" onclick="toggleFields()" required>
-        <label class="form-check-label" for="GUEST">Hotel Guest</label>
-      </div>
-      <div class="form-check">
-        <input type="radio" id="CROFT_MCG" name="REASON" value="croft_mcgettigans" class="form-check-input" onclick="toggleFields()">
-        <label class="form-check-label" for="CROFT_MCG">Croft Bar or McGetigan's</label>
-      </div>
-      <div class="form-check">
-        <input type="radio" id="OTHER" name="REASON" value="other" class="form-check-input" onclick="toggleFields()">
-        <label class="form-check-label" for="OTHER">Other Reason</label>
-      </div>
-    </div>
-    
     <!-- Common Fields: Name and Car Registration -->
-    <div class="form-group">
-      <label for="NAME">*Your Name:</label>
-      <input type="text" id="NAME" name="NAME" class="form-control" required>
+    <div id="main-fields">
+      <div class="form-group">
+        <label for="NAME">*Your Name:</label>
+        <input type="text" id="NAME" name="NAME" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
+        <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
-      <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
-    </div>
-    
+
     <!-- Conditional Fields -->
     <div id="guest-fields" class="conditional-fields">
       <div class="form-group">
@@ -92,44 +85,38 @@
 
 <!-- Script to Toggle Fields and Populate Modal -->
 <script>
-  function toggleFields() {
-    const guestFields = document.getElementById("guest-fields");
-    const otherFields = document.getElementById("other-fields");
+  let selectedReason = "";
+
+  function selectReason(reason) {
+    selectedReason = reason;
+    document.getElementById("reason-buttons").style.display = "none";
+    document.getElementById("main-fields").style.display = "block";
     
-    if (document.getElementById("GUEST").checked) {
-      guestFields.style.display = "block";
-      otherFields.style.display = "none";
+    if (reason === "guest") {
+      document.getElementById("guest-fields").style.display = "block";
       document.getElementById("ROOM").required = true;
       document.getElementById("CHECK-OUT").required = true;
+    } else if (reason === "other") {
+      document.getElementById("other-fields").style.display = "block";
       document.getElementById("OBSERVATIONS").required = false;
-    } else if (document.getElementById("OTHER").checked) {
-      guestFields.style.display = "none";
-      otherFields.style.display = "block";
-      document.getElementById("ROOM").required = false;
-      document.getElementById("CHECK-OUT").required = false;
-      document.getElementById("OBSERVATIONS").required = false;
-    } else {
-      guestFields.style.display = "none";
-      otherFields.style.display = "none";
     }
   }
 
   function populateModal() {
-    const reason = document.querySelector("input[name='REASON']:checked").value;
     const name = document.getElementById("NAME").value;
     const carRegistration = document.getElementById("CAR-REGISTRATION").value;
     const room = document.getElementById("ROOM").value;
     const checkout = document.getElementById("CHECK-OUT").value;
     const remarks = document.getElementById("OBSERVATIONS").value;
 
-    let confirmationText = `<strong>Reason for Visit:</strong> ${reason}<br>
+    let confirmationText = `<strong>Reason for Visit:</strong> ${selectedReason}<br>
                             <strong>Name:</strong> ${name}<br>
                             <strong>Car Registration:</strong> ${carRegistration}<br>`;
     
-    if (reason === "guest") {
+    if (selectedReason === "guest") {
       confirmationText += `<strong>Room Number:</strong> ${room}<br>
                            <strong>Check-Out Date:</strong> ${checkout}`;
-    } else if (reason === "other") {
+    } else if (selectedReason === "other") {
       confirmationText += `<strong>Remarks:</strong> ${remarks}`;
     }
     
