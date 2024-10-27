@@ -21,9 +21,9 @@
 
       <!-- Reason Selection Buttons -->
       <div id="reason-buttons" class="mb-3">
-        <button type="button" class="btn btn-secondary" id="GUEST">Hotel Guest</button>
-        <button type="button" class="btn btn-secondary" id="CROFT_MCG">Croft Bar or McGettigan's</button>
-        <button type="button" class="btn btn-secondary" id="OTHER">Other Reason</button>
+        <button type="button" class="btn btn-primary" id="GUEST">Hotel Guest</button>
+        <button type="button" class="btn btn-success" id="CROFT_MCG">Croft Bar or McGettigan's</button>
+        <button type="button" class="btn btn-info" id="OTHER">Other Reason</button>
       </div>
 
       <!-- Main Form Fields -->
@@ -56,7 +56,7 @@
         </div>
 
         <div class="row g-2 mb-3">
-          <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" required>
+          <input class="form-check-input" type="checkbox" id="CONFIRMED" name="CONFIRMED" value="Yes" required checked>
           <label class="form-check-label" for="CONFIRMED" style="margin-left:15px;">
             I confirm that the vehicle registration information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.
           </label>
