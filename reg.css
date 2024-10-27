@@ -39,3 +39,5 @@
       .checkbox label {
           margin-bottom: 20px !important;
       }
+
+      .conditional-fields, #main-fields, #confirm-section { display: none; }
