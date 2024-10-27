@@ -1,16 +1,71 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-  <title>Visit Registration</title>
-  <style>
-    .conditional-fields, #main-fields, #confirm-section { display: none; }
-  </style>
-</head>
-<body>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="reg.css">
 
-<div class="container">
+  <script>
+    const socket = new WebSocket('wss://car-reg-websocket-server.glitch.me');
+
+    socket.onopen = () => socket.send(JSON.stringify({ register: getClientId() }));
+
+    socket.onmessage = (event) => {
+      const data = event.data instanceof Blob ? handleBlobData(event.data) : JSON.parse(event.data);
+      updateUI(data);
+    };
+
+    function handleBlobData(blob) {
+      const reader = new FileReader();
+      reader.onload = () => updateUI(JSON.parse(reader.result));
+      reader.readAsText(blob);
+    }
+
+    function updateUI(data) {
+      if (data.target === getClientId()) {
+        if (data.name) document.getElementById('NAME').value = data.name;
+        if (data.room) document.getElementById('ROOM').value = data.room;
+        if (data.checkout) updateDateField(data.checkout);
+      }
+    }
+
+    socket.onerror = console.error;
+
+    socket.onclose = (event) => {
+      const message = event.wasClean 
+        ? `Connection closed cleanly, code=${event.code}, reason=${event.reason}` 
+        : 'Connection died unexpectedly';
+      console.log(message);
+    };
+
+    function getClientId() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      return userAgent.includes('android') ? 'samsung' :
+             userAgent.includes('ipad') || userAgent.includes('iphone') || userAgent.includes('mac') ? 'ipad' : 'unknown';
+    }
+
+    function updateDateField(dateTimeString) {
+      const datePart = dateTimeString.split(' ')[0];
+      if (datePart) document.getElementById('CHECK-OUT').value = formatDate(datePart);
+    }
+
+    function formatDate(dateString) {
+      const parts = dateString.split('/');
+      return parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : dateString;
+    }
+  </script>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="reg.js"></script>
+
+  <div class="container">
   <h2>Visit Registration</h2>
   
   <!-- Step 1: Select Reason for Visit with Buttons -->
@@ -153,7 +208,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-<script src="reg.js"></script>
+
 
 </body>
 </html>
