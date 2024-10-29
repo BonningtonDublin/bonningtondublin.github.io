@@ -5,6 +5,8 @@ Autor: Suellen Oliveira
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER YOUR CAR</title>
+  <link rel="stylesheet" href="reg.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
   
   <style>
@@ -62,12 +64,13 @@ Autor: Suellen Oliveira
   </script>
 </head>
 <body>
+  <main id="content" class="main-content" role="main">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div class="container">
-  <h2 class="text-center">REGISTER YOUR CAR</h2>
+  <h2 class="text-center title">REGISTER YOUR CAR</h2>
   
   <!-- Step 1: Select Reason for Visit with Buttons -->
   <div id="reason-buttons" class="d-grid gap-2">
@@ -84,7 +87,7 @@ Autor: Suellen Oliveira
   </div>
 
   <!-- Main Form -->
-  <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" novalidate>
+  <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" autocomplete="off" novalidate>
     
     <!-- Common Fields: Name and Car Registration -->
     <div id="main-fields">
@@ -94,7 +97,7 @@ Autor: Suellen Oliveira
             <label for="NAME">*Your Name:</label>
           </div>
           <div class="col md-2">
-            <label for="CAR-REGISTRATION">*Car Registration / License Plate:</label>
+            <label for="CAR-REGISTRATION">*License Plate:</label>
           </div>
         </div>
         <div class="row">
@@ -125,7 +128,7 @@ Autor: Suellen Oliveira
             <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
           </div>      
           <div class="col md-2">
-            <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control md-2">
+            <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
           </div>
         </div>
       </div>
@@ -203,20 +206,20 @@ Autor: Suellen Oliveira
     
     if (reason === "guest") {
       document.getElementById("guest-fields").style.display = "block";
-      document.getElementById("other-fields").style.display = "block";
+      document.getElementById("other-fields").style.display = "none";
       document.getElementById("ROOM").required = true;
       document.getElementById("CHECK-OUT").required = true;
       document.getElementById("OBSERVATIONS").value = 'Hotel Guest';
     } else if(reason === "croft_mcgettigans") {
-      document.getElementById("other-fields").style.display = "block";
       document.getElementById("guest-fields").style.display = "none";
+      document.getElementById("other-fields").style.display = "none";
       document.getElementById("CHECK-OUT").value = minDateStr;
       document.getElementById("OBSERVATIONS").value = "Croft Bar / McGettigan's";
     } else if (reason === "other") {
       document.getElementById("other-fields").style.display = "block";
       document.getElementById("guest-fields").style.display = "none";
       document.getElementById("CHECK-OUT").value = minDateStr;
-      document.getElementById("OBSERVATIONS").value = 'Event | Meeting | Other';
+      document.getElementById("OBSERVATIONS").value = 'Event | Meeting | Other ';
     } else {
       document.getElementById("guest-fields").style.display = "none";
       document.getElementById("other-fields").style.display = "none";
@@ -255,11 +258,22 @@ Autor: Suellen Oliveira
   function submitForm() {
     document.getElementById("registration-form").submit();
   }
-</script>
 
+  //uppercase
+  $(function() {
+    $('input').keyup(function() {
+        this.value = this.value.toLocaleUpperCase();
+    });
+  });
+</script>
+    
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 
+<footer class="site-footer">
+   <span class="site-footer-credits">© 2024 Bonnington Dublin.</span>
+</footer>
+</main>
 </body>
 </html>
