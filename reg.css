@@ -74,7 +74,7 @@ input[type="radio"]:checked {
   appearance: none; /* Remove default browser styling */
   -webkit-appearance: none; /* For Webkit-based browsers */
   -moz-appearance: none; /* For Mozilla-based browsers */
-  width: 31rem;
+  width: 40rem;
   }
 }
 
