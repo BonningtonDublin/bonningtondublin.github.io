@@ -1,7 +1,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: bold;
-    line-height: 1.8;
+    font-weight: 900;
+    line-height: 2;
     color: #212529;
     text-align: left;
 }
@@ -69,7 +69,7 @@ input[type="radio"]:checked {
   }
 }
 
-@media (min-width: 980px) {
+@media (min-width: 880px) {
   input[type="date"] {
   appearance: none; /* Remove default browser styling */
   -webkit-appearance: none; /* For Webkit-based browsers */
