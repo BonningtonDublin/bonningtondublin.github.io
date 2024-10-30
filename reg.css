@@ -69,14 +69,6 @@ input[type="radio"]:checked {
   }
 }
 
-@media (min-width: 1020px) {
-  input[type="date"] {
-  appearance: none; /* Remove default browser styling */
-  -webkit-appearance: none; /* For Webkit-based browsers */
-  -moz-appearance: none; /* For Mozilla-based browsers */
-  width: 31rem;
-  }
-}
 
 .checkbox label {
   margin-bottom: 20px !important;
