@@ -69,7 +69,7 @@ input[type="radio"]:checked {
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1020px) {
   input[type="date"] {
   appearance: none; /* Remove default browser styling */
   -webkit-appearance: none; /* For Webkit-based browsers */
