@@ -65,11 +65,11 @@ input[type="radio"]:checked {
   appearance: none; /* Remove default browser styling */
   -webkit-appearance: none; /* For Webkit-based browsers */
   -moz-appearance: none; /* For Mozilla-based browsers */
-  width: 30vw;
+  width: 39vw;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
   input[type="date"] {
   appearance: none; /* Remove default browser styling */
   -webkit-appearance: none; /* For Webkit-based browsers */
