@@ -144,7 +144,7 @@ Autor: Suellen Lourrayne
     </div>
 
     <div id="save" style="display: none;" class="d-grid gap-2">
-      <button type="button" class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+      <button id="btnSubmit" type="button" class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
     </div>
   </form>
 </div>
@@ -193,6 +193,31 @@ Autor: Suellen Lourrayne
   let minDate = new Date();
   minDate.setDate(minDate.getDate() + 1);
   const minDateStr = minDate.toISOString().split("T")[0];
+
+  // Add styles to make submit button flashing green
+  const keyframes = `
+  @keyframes flashGreen {
+    0% { background-color: green; }
+    50% { background-color: lightgreen; }
+    100% { background-color: green; }
+  }`;
+  
+  const style = document.createElement('style');
+  style.textContent = keyframes;
+  document.head.appendChild(style);
+  
+  // Select the existing button in the HTML
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttonSubmit = document.getElementById("btnSubmit");
+  
+    // Apply animation to the button
+    if (button) {
+      buttonSubmit.style.animation = 'flashGreen 1s infinite';
+      buttonSubmit.style.border = 'none';
+      buttonSubmit.style.color = 'white';
+      buttonSubmit.style.cursor = 'pointer';
+    }
+  });
 
   function selectReason(reason) {
     selectedReason = reason;
