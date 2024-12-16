@@ -81,12 +81,6 @@ Autor: Suellen Lourrayne
     <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" id="btnOther" onclick="selectReason('other')">Other Reason</button>
   </div>
 
-  <!-- Change Reason and Submit Button -->
-  <div id="change-reason" style="display: none;" class="d-grid gap-2">
-    <!--<button type="button" class="btn btn-outline-secondary btn-block" onclick="changeReason()">Change Reason for Visit</button> -->
-    <button type="button" class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
-  </div>
-
   <!-- Main Form -->
   <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" autocomplete="off" novalidate>
     
@@ -212,7 +206,6 @@ Autor: Suellen Lourrayne
     document.getElementById("btnOther").classList.remove("mb-3");
     document.getElementById("main-fields").style.display = "block";
     document.getElementById("other-fields").style.display = "block";
-    document.getElementById("change-reason").style.display = "block";
     document.getElementById("confirm-section").style.display = "block";
     
     if (reason === "guest") {
@@ -240,7 +233,6 @@ Autor: Suellen Lourrayne
   function changeReason() {
     document.getElementById("reason-buttons").style.display = "block";
     document.getElementById("main-fields").style.display = "none";
-    document.getElementById("change-reason").style.display = "none";
     document.getElementById("confirm-section").style.display = "none";
     document.getElementById("guest-fields").style.display = "none";
     document.getElementById("other-fields").style.display = "none";
