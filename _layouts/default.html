@@ -76,9 +76,9 @@ Autor: Suellen Lourrayne
   <!-- Step 1: Select Reason for Visit with Buttons -->
   <div id="reason-buttons" class="d-grid gap-2">
     <button type="button" class="btn btn-lg btn-block mb-3 hidden"></button>
-    <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" onclick="selectReason('guest')">Hotel Guest</button>
-    <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGettigan's</button>
-    <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" onclick="selectReason('other')">Other Reason</button>
+    <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" id="btnGuest" onclick="selectReason('guest')">Hotel Guest</button>
+    <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" id="btnBar" onclick="selectReason('croft_mcgettigans')">Croft Bar or McGettigan's</button>
+    <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" id="btnOther" onclick="selectReason('other')">Other Reason</button>
   </div>
 
   <!-- Change Reason and Submit Button -->
@@ -200,6 +200,12 @@ Autor: Suellen Lourrayne
   function selectReason(reason) {
     selectedReason = reason;
     //document.getElementById("reason-buttons").style.display = "none";
+    document.getElementById("btnGuest").classList.remove("btn-block");
+    document.getElementById("btnBar").classList.remove("btn-block");
+    document.getElementById("btnOther").classList.remove("btn-block");
+    document.getElementById("btnGuest").classList.remove("mb-3");
+    document.getElementById("btnBar").classList.remove("mb-3");
+    document.getElementById("btnOther").classList.remove("mb-3");
     document.getElementById("main-fields").style.display = "block";
     document.getElementById("other-fields").style.display = "block";
     //document.getElementById("change-reason").style.display = "block";
