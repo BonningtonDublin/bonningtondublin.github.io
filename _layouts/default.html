@@ -15,7 +15,7 @@ Autor: Suellen Lourrayne
   </style>
 
   <script>
-    const socket = new WebSocket('wss://https://bonningtondublin-websocket.onrender.com');
+    const socket = new WebSocket('wss://bonningtondublin-websocket.onrender.com');
 
     socket.onopen = () => socket.send(JSON.stringify({ register: getClientId() }));
 
