@@ -1,6 +1,4 @@
-<!-- 
-Autor: Suellen Lourrayne 
--->
+<!-- Author: Suellen Lourrayne -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,29 +7,21 @@ Autor: Suellen Lourrayne
   <link rel="icon" href="images/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="reg.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-  
+
   <style>
-    .conditional-fields, #main-fields, #other-fields, #confirm-section { display: none; }
+    .conditional-fields, #main-fields, #other-fields, #confirm-section {
+      display: none;
+    }
   </style>
 
   <script>
-    // Ensure WebSocket URL is set correctly for your project
-    const socket = new WebSocket('wss://bonningtondublin-websocket.onrender.com'); // Update WebSocket URL accordingly
-
+    // WebSocket connection and logic
+    const socket = new WebSocket('wss://bonningtondublin-websocket.onrender.com');
     socket.onopen = () => socket.send(JSON.stringify({ register: getClientId() }));
 
     socket.onmessage = (event) => {
       const data = event.data instanceof Blob ? handleBlobData(event.data) : JSON.parse(event.data);
       updateUI(data);
-    };
-
-    socket.onerror = console.error;
-
-    socket.onclose = (event) => {
-      const message = event.wasClean 
-        ? `Connection closed cleanly, code=${event.code}, reason=${event.reason}` 
-        : 'Connection died unexpectedly';
-      console.log(message);
     };
 
     function handleBlobData(blob) {
@@ -48,10 +38,18 @@ Autor: Suellen Lourrayne
       }
     }
 
+    socket.onerror = console.error;
+
+    socket.onclose = (event) => {
+      const message = event.wasClean ? `Connection closed cleanly, code=${event.code}, reason=${event.reason}` : 'Connection died unexpectedly';
+      console.log(message);
+    };
+
     function getClientId() {
       const userAgent = navigator.userAgent.toLowerCase();
-      return userAgent.includes('android') ? 'samsung' :
-             userAgent.includes('ipad') || userAgent.includes('iphone') || userAgent.includes('mac') ? 'ipad' : 'unknown';
+      if (userAgent.includes('android')) return 'samsung';
+      if (userAgent.includes('ipad') || userAgent.includes('iphone') || userAgent.includes('mac')) return 'ipad';
+      return 'unknown';
     }
 
     function updateDateField(dateTimeString) {
@@ -67,242 +65,126 @@ Autor: Suellen Lourrayne
 </head>
 <body>
   <main id="content" class="main-content" role="main">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<div class="container">
-  <h2 class="text-center title">REGISTER YOUR CAR</h2>
-  
-  <!-- Step 1: Select Reason for Visit with Buttons -->
-  <div id="reason-buttons" class="d-grid gap-2 text-center">
-    <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" id="btnGuest" onclick="selectReason('guest')">Hotel Guest</button>
-    <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" id="btnBar" onclick="selectReason('croft_mcgettigans')">Bar & Restaurant</button>
-    <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" id="btnOther" onclick="selectReason('other')">Other Reason</button>
-  </div>
+    <div class="container">
+      <h2 class="text-center title">REGISTER YOUR CAR</h2>
 
-  <!-- Main Form -->
-  <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" autocomplete="off" novalidate>
-    
-    <!-- Common Fields: Name and Car Registration -->
-    <div id="main-fields">
-      <div class="form-group">
-        <div class="row">
-          <div class="col md-2">
-            <label for="NAME">*Your Name:</label>
-          </div>
-          <div class="col md-2">
-            <label for="CAR-REGISTRATION">*Car Registration:</label>
+      <!-- Step 1: Select Reason for Visit -->
+      <div id="reason-buttons" class="d-grid gap-2 text-center">
+        <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" id="btnGuest" onclick="selectReason('guest')">Hotel Guest</button>
+        <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" id="btnBar" onclick="selectReason('croft_mcgettigans')">Bar & Restaurant</button>
+        <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" id="btnOther" onclick="selectReason('other')">Other Reason</button>
+      </div>
+
+      <!-- Main Form -->
+      <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" autocomplete="off" novalidate>
+        
+        <!-- Common Fields: Name and Car Registration -->
+        <div id="main-fields">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-2">
+                <label for="NAME">*Your Name:</label>
+              </div>
+              <div class="col-md-2">
+                <label for="CAR-REGISTRATION">*Car Registration:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <input type="text" id="NAME" name="NAME" class="form-control" required>
+              </div>
+              <div class="col-md-2">
+                <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col md-2">
-            <input type="text" id="NAME" name="NAME" class="form-control" required>
+
+        <!-- Conditional Fields for Hotel Guest -->
+        <div id="guest-fields" class="conditional-fields">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-2">
+                <label for="ROOM">*Room Number:</label>
+              </div>
+              <div class="col-md-2">
+                <label for="CHECK-OUT">*Check-Out Date:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
+              </div>
+              <div class="col-md-2">
+                <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
+              </div>
+            </div>
           </div>
-          <div class="col md-2">
-            <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+        </div>
+
+        <!-- Additional Fields -->
+        <div id="other-fields">
+          <div class="form-group">
+            <label for="OBSERVATIONS">Remarks (Optional):</label>
+            <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control">
+          </div>
+        </div>
+
+        <!-- Confirmation Checkbox -->
+        <div id="confirm-section">
+          <div class="form-check mb-3">
+            <input type="checkbox" id="CONFIRMED" name="CONFIRMED" class="form-check-input" value="Yes" checked required>
+            <label for="CONFIRMED" class="form-check-label">I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped. By submitting, you agree to the terms stated above.</label>
+          </div>
+        </div>
+
+        <div id="save" style="display: none;" class="d-grid gap-2">
+          <button id="btnSubmit" type="button" class="btn-success btn-block btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Modal for Confirmation -->
+    <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="submitModalLabel">Please confirm your information!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modalBody"></div>
+          <div class="modal-footer d-grid gap-2">
+            <button type="button" class="btn-lg btn-secondary" data-dismiss="modal">Back</button>
+            <button type="button" class="btn-lg btn-primary" onclick="submitForm()">Confirm & Save</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Conditional Fields -->
-    <div id="guest-fields" class="conditional-fields">
-      <div class="form-group">
-        <div class="row">
-          <div class="col md-2">
-            <label for="ROOM">*Room Number:</label>
-          </div>
-          <input type="datetime-local" id="CHECK-IN" name="CHECK-IN" class="form-control" required hidden>
-          <div class="col md-2">
-            <label for="CHECK-OUT">*Check-Out Date:</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col md-2">
-            <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
-          </div>      
-          <div class="col md-2">
-            <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div id="other-fields">
-      <div class="form-group">
-        <label for="OBSERVATIONS">Remarks (Optional):</label>
-        <input type="text" id="OBSERVATIONS" name="OBSERVATIONS" class="form-control">
-      </div>
-    </div>
+    <!-- Script to Toggle Fields and Populate Modal -->
+    <script>
+      let selectedReason = "";
 
-    <!-- Confirmation Checkbox -->
-    <div id="confirm-section">
-      <div class="form-check mb-3">
-        <input type="checkbox" id="CONFIRMED" name="CONFIRMED" class="form-check-input" value="Yes" checked required>
-        <label for="CONFIRMED" class="form-check-label">I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped.<br>By submitting, you agree to the terms stated above.</label>
-      </div>      
-    </div>
+      // Helper function to format date to "YYYY-MM-DDTHH:MM"
+      const convertToDateTimeLocalString = (date) => {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
+        const day = date.getDate().toString().padStart(2, "0");
+        const hours = date.getHours().toString().padStart(2, "0");
+        const minutes = date.getMinutes().toString().padStart(2, "0");
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+      };
 
-    <div id="save" style="display: none;" class="d-grid gap-2">
-      <button id="btnSubmit" type="button" class="btn-success btn-block btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
-    </div>
-  </form>
-</div>
+      // Set current date and time to CHECK-IN field
+      const currentTime = new Date();
+      const today = convertToDateTimeLocalString(currentTime);
+      document.getElementById('CHECK-IN').value = today;
 
-<!-- Modal for Confirmation -->
-<div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="submitModalLabel">Please confirm your information!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-      <div class="modal-footer d-grid gap-2">
-        <button type="button" class="btn-lg btn-secondary" data-dismiss="modal">Back</button>
-        <button type="button" class="btn-lg btn-primary" onclick="submitForm()">Confirm & Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Script to Toggle Fields and Populate Modal -->
-<script>
-  let selectedReason = "";
-  document.getElementById('OBSERVATIONS').value = '';
-
-// Helper function to format date to "YYYY-MM-DDTHH:MM"
-  const convertToDateTimeLocalString = (date) => {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
-  };
-
-  // Set current date and time to CHECK-IN field
-  const currentTime = new Date();
-  const today = convertToDateTimeLocalString(currentTime);
-  document.getElementById('CHECK-IN').value = today;
-
-  // Set minimum CHECK-OUT date to 1 day from today
-  let minDate = new Date();
-  minDate.setDate(minDate.getDate() + 1);
-  const minDateStr = minDate.toISOString().split("T")[0];
-
-  // Add styles to make submit button flashing green
-  const keyframes = `
-  @keyframes flashGreen {
-    0% { background-color: green; }
-    50% { background-color: lightgreen; }
-    100% { background-color: green; }
-  }`;
-  
-  const style = document.createElement('style');
-  style.textContent = keyframes;
-  document.head.appendChild(style);
-  
-  // Select the existing button in the HTML
-  document.addEventListener('DOMContentLoaded', () => {
-    const buttonSubmit = document.getElementById("btnSubmit");
-  
-    // Apply animation to the button
-    if (buttonSubmit) {
-      buttonSubmit.style.animation = 'flashGreen 1s infinite';
-      buttonSubmit.style.border = 'none';
-      buttonSubmit.style.color = 'white';
-      buttonSubmit.style.cursor = 'pointer';
-    }
-  });
-
-  function selectReason(reason) {
-    selectedReason = reason;
-    document.getElementById("btnGuest").classList.remove("btn-block");
-    document.getElementById("btnBar").classList.remove("btn-block");
-    document.getElementById("btnOther").classList.remove("btn-block");
-    document.getElementById("btnGuest").classList.remove("mb-3");
-    document.getElementById("btnBar").classList.remove("mb-3");
-    document.getElementById("btnOther").classList.remove("mb-3");
-    document.getElementById("save").style.display = "block";
-    document.getElementById("main-fields").style.display = "block";
-    document.getElementById("other-fields").style.display = "block";
-    document.getElementById("confirm-section").style.display = "block";
-    
-    if (reason === "guest") {
-      document.getElementById("guest-fields").style.display = "block";
-      document.getElementById("other-fields").style.display = "none";
-      document.getElementById("ROOM").required = true;
-      document.getElementById("CHECK-OUT").required = true;
-      document.getElementById("OBSERVATIONS").value = 'Hotel Guest';
-    } else if(reason === "croft_mcgettigans") {
-      document.getElementById("guest-fields").style.display = "none";
-      document.getElementById("other-fields").style.display = "none";
-      document.getElementById("CHECK-OUT").value = minDateStr;
-      document.getElementById("OBSERVATIONS").value = "Croft Bar / McGettigan's";
-    } else if (reason === "other") {
-      document.getElementById("other-fields").style.display = "block";
-      document.getElementById("guest-fields").style.display = "none";
-      document.getElementById("CHECK-OUT").value = minDateStr;
-      document.getElementById("OBSERVATIONS").value = 'Event | Meeting | Other ';
-    } else {
-      document.getElementById("guest-fields").style.display = "none";
-      document.getElementById("other-fields").style.display = "none";
-    }
-  }
-
-  function changeReason() {
-    document.getElementById("reason-buttons").style.display = "block";
-    document.getElementById("main-fields").style.display = "none";
-    document.getElementById("confirm-section").style.display = "none";
-    document.getElementById("guest-fields").style.display = "none";
-    document.getElementById("other-fields").style.display = "none";
-    document.getElementById("save").style.display = "none";
-  }
-
-  function populateModal() {
-    const name = document.getElementById("NAME").value;
-    const carRegistration = document.getElementById("CAR-REGISTRATION").value;
-    const room = document.getElementById("ROOM").value;
-    const checkout = document.getElementById("CHECK-OUT").value;
-    const remarks = document.getElementById("OBSERVATIONS").value;
-
-    let confirmationText = `<strong>Name:</strong> ${name}<br>
-                            <strong>Car Registration:</strong> ${carRegistration}<br>`;
-    
-    if (selectedReason === "guest") {
-      confirmationText += `<strong>Room Number:</strong> ${room}<br>
-                           <strong>Check-Out Date:</strong> ${checkout}<br>`;
-    }
-    
-    confirmationText += `<strong>Remarks:</strong> ${remarks}`;
-    
-    document.getElementById("modalBody").innerHTML = confirmationText;
-  }
-
-  function submitForm() {
-    document.getElementById("registration-form").submit();
-  }
-
-  // Uppercase input
-  $(function() {
-    $('input').keyup(function() {
-        this.value = this.value.toLocaleUpperCase();
-    });
-  });
-</script>
-    
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-
-<footer class="site-footer">
-   <span class="site-footer-credits">© 2024 Bonnington Dublin.</span>
-</footer>
-</main>
-</body>
-</html>
+      // Set minimum CHECK-OUT date to 
