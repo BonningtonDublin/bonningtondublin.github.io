@@ -1,89 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REGISTER YOUR CAR</title>
   <link rel="icon" href="images/logo.png" type="image/x-icon" />
-  <link rel="stylesheet" href="reg.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-  
+
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f7fa;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #333;
+    .conditional-fields,
+    #main-fields,
+    #other-fields,
+    #confirm-section {
+      display: none;
     }
 
     .form-group label {
       font-weight: bold;
     }
 
-    .form-group input {
-      height: 45px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      padding: 0 15px;
-      font-size: 16px;
-    }
-
-    .btn-primary, .btn-success, .btn-secondary {
+    .btn-success,
+    .btn-primary {
       width: 100%;
       font-size: 18px;
       padding: 12px;
       border-radius: 4px;
     }
 
-    .conditional-fields, #confirm-section, #save {
-      display: none;
-    }
-
-    /* New Styling for Two-Line Layout */
-    .form-row {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .form-column {
-      width: 48%;
-    }
-
     .modal-body p {
       font-size: 16px;
     }
-
-    .modal-footer button {
-      font-size: 16px;
-      padding: 10px 20px;
-    }
   </style>
 </head>
+
 <body>
   <main id="content" class="main-content" role="main">
     <div class="container">
-      <h2>REGISTER YOUR CAR</h2>
+      <h2 class="text-center title">REGISTER YOUR CAR</h2>
 
       <!-- Step 1: Select Reason for Visit -->
       <div id="reason-buttons" class="d-grid gap-2 text-center">
-        <button type="button" class="btn btn-outline-primary btn-lg mb-3" id="btnGuest" onclick="selectReason('guest')">Hotel Guest</button>
-        <button type="button" class="btn btn-outline-dark btn-lg mb-3" id="btnBar" onclick="selectReason('croft_mcgettigans')">Bar & Restaurant</button>
-        <button type="button" class="btn btn-outline-info btn-lg mb-3" id="btnOther" onclick="selectReason('other')">Other Reason</button>
+        <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" id="btnGuest" onclick="selectReason('guest')">Hotel Guest</button>
+        <button type="button" class="btn btn-outline-dark btn-lg btn-block mb-3" id="btnBar" onclick="selectReason('croft_mcgettigans')">Bar & Restaurant</button>
+        <button type="button" class="btn btn-outline-info btn-lg btn-block mb-3" id="btnOther" onclick="selectReason('other')">Other Reason</button>
       </div>
 
       <!-- Main Form -->
@@ -91,28 +51,32 @@
         
         <!-- Common Fields: Name and Car Registration -->
         <div id="main-fields">
-          <div class="form-row">
-            <div class="form-column">
-              <label for="NAME">*Your Name:</label>
-              <input type="text" id="NAME" name="NAME" class="form-control" required>
-            </div>
-            <div class="form-column">
-              <label for="CAR-REGISTRATION">*Car Registration:</label>
-              <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="NAME">*Your Name:</label>
+                <input type="text" id="NAME" name="NAME" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="CAR-REGISTRATION">*Car Registration:</label>
+                <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Conditional Fields for Hotel Guest -->
         <div id="guest-fields" class="conditional-fields">
-          <div class="form-row">
-            <div class="form-column">
-              <label for="ROOM">*Room Number:</label>
-              <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
-            </div>
-            <div class="form-column">
-              <label for="CHECK-OUT">*Check-Out Date:</label>
-              <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="ROOM">*Room Number:</label>
+                <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
+              </div>
+              <div class="col-md-6">
+                <label for="CHECK-OUT">*Check-Out Date:</label>
+                <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
+              </div>
             </div>
           </div>
         </div>
@@ -129,114 +93,91 @@
         <div id="confirm-section">
           <div class="form-check mb-3">
             <input type="checkbox" id="CONFIRMED" name="CONFIRMED" class="form-check-input" value="Yes" checked required>
-            <label for="CONFIRMED" class="form-check-label">
-              I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped. By submitting, you agree to the terms stated above.
-            </label>
+            <label for="CONFIRMED" class="form-check-label">I confirm that the information provided above is accurate. I understand that any inaccuracies may result in unauthorized parking and will lead to my vehicle being clamped. By submitting, you agree to the terms stated above.</label>
           </div>
         </div>
 
         <div id="save" style="display: none;">
-          <button id="btnSubmit" type="button" class="btn btn-success" onclick="openNewWindow()">Submit</button>
+          <button id="btnSubmit" type="button" class="btn btn-success" onclick="populateModal()">Submit</button>
         </div>
 
       </form>
     </div>
 
-    <!-- Script to Toggle Fields and Open New Window -->
-    <script>
-      let selectedReason = "";
+    <!-- Modal for Confirmation -->
+    <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="submitModalLabel">Please confirm your information!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modalBody"></div>
+          <div class="modal-footer d-grid gap-2">
+            <button type="button" class="btn-lg btn-secondary" data-dismiss="modal">Back</button>
+            <button type="button" class="btn-lg btn-primary" onclick="submitForm()">Confirm & Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      // Function to handle reason selection
-      function selectReason(reason) {
-        selectedReason = reason;
-
-        // Hide all conditional sections
-        document.querySelectorAll('.conditional-fields').forEach(field => field.style.display = 'none');
-
-        // Show the corresponding section based on the reason selected
-        if (reason === 'guest') {
-          document.getElementById('guest-fields').style.display = 'block';
-        } else if (reason === 'other') {
-          document.getElementById('other-fields').style.display = 'block';
-        }
-
-        // Show the main fields (Name & Car Registration)
-        document.getElementById('main-fields').style.display = 'block';
-
-        // Show the confirmation section and save button
-        document.getElementById('confirm-section').style.display = 'block';
-        document.getElementById('save').style.display = 'block';
-      }
-
-      // Open new window to show the form data
-      function openNewWindow() {
-        // Get form data
-        const name = document.getElementById('NAME').value;
-        const carRegistration = document.getElementById('CAR-REGISTRATION').value;
-        const room = document.getElementById('ROOM') ? document.getElementById('ROOM').value : '';
-        const checkOut = document.getElementById('CHECK-OUT') ? document.getElementById('CHECK-OUT').value : '';
-
-        // Create content for the new window
-        const content = `
-          <html>
-            <head>
-              <title>Car Registration Details</title>
-              <style>
-                body {
-                  font-family: Arial, sans-serif;
-                  margin: 30px;
-                }
-                h2 {
-                  color: #333;
-                }
-                .form-group {
-                  margin-bottom: 15px;
-                }
-                .label {
-                  font-weight: bold;
-                }
-                .form-group input {
-                  width: 300px;
-                  padding: 8px;
-                  margin-left: 15px;
-                }
-                .form-group div {
-                  margin-bottom: 10px;
-                }
-              </style>
-            </head>
-            <body>
-              <h2>Car Registration Details</h2>
-              <div class="form-group">
-                <div>
-                  <label class="label">Your Name:</label>
-                  <input type="text" value="${name}" readonly>
-                </div>
-                <div>
-                  <label class="label">Car Registration:</label>
-                  <input type="text" value="${carRegistration}" readonly>
-                </div>
-              </div>
-              <div class="form-group">
-                <div>
-                  <label class="label">Room Number:</label>
-                  <input type="text" value="${room}" readonly>
-                </div>
-                <div>
-                  <label class="label">Check-out Date:</label>
-                  <input type="text" value="${checkOut}" readonly>
-                </div>
-              </div>
-            </body>
-          </html>
-        `;
-
-        // Open a new window and write the content to it
-        const newWindow = window.open('', '_blank', 'width=600,height=400');
-        newWindow.document.write(content);
-        newWindow.document.close();
-      }
-    </script>
   </main>
+
+  <!-- Bootstrap and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    let selectedReason = "";
+
+    // Function to handle reason selection
+    function selectReason(reason) {
+      selectedReason = reason;
+
+      // Hide all conditional sections
+      document.querySelectorAll('.conditional-fields').forEach(field => field.style.display = 'none');
+
+      // Show the corresponding section based on the reason selected
+      if (reason === 'guest') {
+        document.getElementById('guest-fields').style.display = 'block';
+      } else if (reason === 'other') {
+        document.getElementById('other-fields').style.display = 'block';
+      }
+
+      // Show the main fields (Name & Car Registration)
+      document.getElementById('main-fields').style.display = 'block';
+
+      // Show the confirmation section and save button
+      document.getElementById('confirm-section').style.display = 'block';
+      document.getElementById('save').style.display = 'block';
+    }
+
+    // Populate the modal with form data before submission
+    function populateModal() {
+      const name = document.getElementById('NAME').value;
+      const carRegistration = document.getElementById('CAR-REGISTRATION').value;
+      const room = document.getElementById('ROOM') ? document.getElementById('ROOM').value : '';
+      const checkOut = document.getElementById('CHECK-OUT') ? document.getElementById('CHECK-OUT').value : '';
+
+      const modalContent = `
+        <p><strong>Your Name:</strong> ${name}</p>
+        <p><strong>Car Registration:</strong> ${carRegistration}</p>
+        <p><strong>Room Number:</strong> ${room}</p>
+        <p><strong>Check-out Date:</strong> ${checkOut}</p>
+      `;
+
+      document.getElementById('modalBody').innerHTML = modalContent;
+    }
+
+    // Function to submit the form after confirmation
+    function submitForm() {
+      document.getElementById('registration-form').submit();
+    }
+  </script>
+
 </body>
+
 </html>
