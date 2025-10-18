@@ -123,21 +123,6 @@
     <script>
       let selectedReason = "";
 
-      // Helper function to format date to "YYYY-MM-DDTHH:MM"
-      const convertToDateTimeLocalString = (date) => {
-        const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, "0");
-        const day = date.getDate().toString().padStart(2, "0");
-        const hours = date.getHours().toString().padStart(2, "0");
-        const minutes = date.getMinutes().toString().padStart(2, "0");
-        return `${year}-${month}-${day}T${hours}:${minutes}`;
-      };
-
-      // Set current date and time to CHECK-IN field
-      const currentTime = new Date();
-      const today = convertToDateTimeLocalString(currentTime);
-      document.getElementById('CHECK-IN').value = today;
-
       // Function to handle reason selection
       function selectReason(reason) {
         selectedReason = reason;
@@ -174,4 +159,25 @@
         `;
         
         if (room) {
-          modal
+          modalContent += `<p><strong>Room Number:</strong> ${room}</p>`;
+        }
+        
+        if (checkOut) {
+          modalContent += `<p><strong>Check-Out Date:</strong> ${checkOut}</p>`;
+        }
+
+        if (observations) {
+          modalContent += `<p><strong>Remarks:</strong> ${observations}</p>`;
+        }
+
+        document.getElementById('modalBody').innerHTML = modalContent;
+      }
+
+      // Function to submit the form after confirmation
+      function submitForm() {
+        document.getElementById('registration-form').submit();
+      }
+    </script>
+  </main>
+</body>
+</html>
