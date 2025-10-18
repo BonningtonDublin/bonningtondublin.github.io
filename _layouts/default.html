@@ -53,15 +53,6 @@
     .conditional-fields, #confirm-section, #save {
       display: none;
     }
-
-    .modal-body p {
-      font-size: 16px;
-    }
-
-    .modal-footer button {
-      font-size: 16px;
-      padding: 10px 20px;
-    }
   </style>
 </head>
 <body>
@@ -126,32 +117,13 @@
         </div>
 
         <div id="save" style="display: none;">
-          <button id="btnSubmit" type="button" class="btn btn-success" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
+          <button id="btnSubmit" type="button" class="btn btn-success" onclick="openNewWindow()">Submit</button>
         </div>
 
       </form>
     </div>
 
-    <!-- Modal for Confirmation -->
-    <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="submitModalLabel">Please confirm your information!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" id="modalBody"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-            <button type="button" class="btn btn-primary" onclick="submitForm()">Confirm & Save</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Script to Toggle Fields and Populate Modal -->
+    <!-- Script to Toggle Fields and Open New Window -->
     <script>
       let selectedReason = "";
 
@@ -177,34 +149,75 @@
         document.getElementById('save').style.display = 'block';
       }
 
-      // Populate Modal with the current data
-      function populateModal() {
+      // Open new window to show the form data
+      function openNewWindow() {
+        // Get form data
         const name = document.getElementById('NAME').value;
         const carRegistration = document.getElementById('CAR-REGISTRATION').value;
         const room = document.getElementById('ROOM') ? document.getElementById('ROOM').value : '';
         const checkOut = document.getElementById('CHECK-OUT') ? document.getElementById('CHECK-OUT').value : '';
-        const observations = document.getElementById('OBSERVATIONS') ? document.getElementById('OBSERVATIONS').value : '';
 
-        let modalContent = `
-          <p><strong>Your Name:</strong> ${name}</p>
-          <p><strong>Car Registration:</strong> ${carRegistration}</p>
+        // Create content for the new window
+        const content = `
+          <html>
+            <head>
+              <title>Car Registration Details</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 30px;
+                }
+                h2 {
+                  color: #333;
+                }
+                .form-group {
+                  margin-bottom: 15px;
+                }
+                .label {
+                  font-weight: bold;
+                }
+                .form-group input {
+                  width: 300px;
+                  padding: 8px;
+                  margin-left: 15px;
+                }
+                .form-group div {
+                  margin-bottom: 10px;
+                }
+              </style>
+            </head>
+            <body>
+              <h2>Car Registration Details</h2>
+              <div class="form-group">
+                <div>
+                  <label class="label">Your Name:</label>
+                  <input type="text" value="${name}" readonly>
+                </div>
+                <div>
+                  <label class="label">Car Registration:</label>
+                  <input type="text" value="${carRegistration}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <div>
+                  <label class="label">Room Number:</label>
+                  <input type="text" value="${room}" readonly>
+                </div>
+                <div>
+                  <label class="label">Check-out Date:</label>
+                  <input type="text" value="${checkOut}" readonly>
+                </div>
+              </div>
+            </body>
+          </html>
         `;
-        
-        if (room) {
-          modalContent += `<p><strong>Room Number:</strong> ${room}</p>`;
-        }
-        
-        if (checkOut) {
-          modalContent += `<p><strong>Check-Out Date:</strong> ${checkOut}</p>`;
-        }
 
-        if (observations) {
-          modalContent += `<p><strong>Remarks:</strong> ${observations}</p>`;
-        }
-
-        document.getElementById('modalBody').innerHTML = modalContent;
+        // Open a new window and write the content to it
+        const newWindow = window.open('', '_blank', 'width=600,height=400');
+        newWindow.document.write(content);
+        newWindow.document.close();
       }
-
-      // Function to submit the form after confirmation
-      function submitForm() {
-        document.getElementById('registration-form').submit();
+    </script>
+  </main>
+</body>
+</html>
