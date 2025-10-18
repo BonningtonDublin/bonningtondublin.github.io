@@ -1,41 +1,64 @@
-<!DOCTYPE html>
+<!-- Author: Suellen Lourrayne -->
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REGISTER YOUR CAR</title>
   <link rel="icon" href="images/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="reg.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-
   <style>
-    .conditional-fields,
-    #main-fields,
-    #other-fields,
-    #confirm-section {
+    .conditional-fields, #main-fields, #other-fields, #confirm-section {
       display: none;
     }
-
-    .form-group label {
-      font-weight: bold;
-    }
-
-    .btn-success,
-    .btn-primary {
-      width: 100%;
-      font-size: 18px;
-      padding: 12px;
-      border-radius: 4px;
-    }
-
-    .modal-body p {
-      font-size: 16px;
-    }
   </style>
-</head>
+  <script>
+    // Function to handle reason selection
+    function selectReason(reason) {
+      document.getElementById('main-fields').style.display = 'block';
+      document.getElementById('confirm-section').style.display = 'block';
+      document.getElementById('save').style.display = 'block';
 
+      // Hide all conditional sections
+      document.querySelectorAll('.conditional-fields').forEach(field => field.style.display = 'none');
+
+      // Show the corresponding section based on the reason selected
+      if (reason === 'guest') {
+        document.getElementById('guest-fields').style.display = 'block';
+      } else if (reason === 'other') {
+        document.getElementById('other-fields').style.display = 'block';
+      }
+    }
+
+    // Populate the modal with form data before submission
+    function populateModal() {
+      const name = document.getElementById('NAME').value;
+      const carRegistration = document.getElementById('CAR-REGISTRATION').value;
+      const room = document.getElementById('ROOM') ? document.getElementById('ROOM').value : '';
+      const checkOut = document.getElementById('CHECK-OUT') ? document.getElementById('CHECK-OUT').value : '';
+
+      const modalContent = `
+        <p><strong>Your Name:</strong> ${name}</p>
+        <p><strong>Car Registration:</strong> ${carRegistration}</p>
+        <p><strong>Room Number:</strong> ${room}</p>
+        <p><strong>Check-out Date:</strong> ${checkOut}</p>
+      `;
+
+      document.getElementById('modalBody').innerHTML = modalContent;
+    }
+
+    // Function to submit the form after confirmation
+    function submitForm() {
+      document.getElementById('registration-form').submit();
+    }
+  </script>
+</head>
 <body>
   <main id="content" class="main-content" role="main">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
     <div class="container">
       <h2 class="text-center title">REGISTER YOUR CAR</h2>
 
@@ -48,17 +71,23 @@
 
       <!-- Main Form -->
       <form id="registration-form" action="https://api.sheetmonkey.io/form/iQMYhHKk257VGevi81mAqL" method="post" class="needs-validation" style="margin-top: 15px;" autocomplete="off" novalidate>
-        
+
         <!-- Common Fields: Name and Car Registration -->
         <div id="main-fields">
           <div class="form-group">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <label for="NAME">*Your Name:</label>
+              </div>
+              <div class="col-md-2">
+                <label for="CAR-REGISTRATION">*Car Registration:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
                 <input type="text" id="NAME" name="NAME" class="form-control" required>
               </div>
-              <div class="col-md-6">
-                <label for="CAR-REGISTRATION">*Car Registration:</label>
+              <div class="col-md-2">
                 <input type="text" id="CAR-REGISTRATION" name="CAR-REGISTRATION" class="form-control" required>
               </div>
             </div>
@@ -69,12 +98,18 @@
         <div id="guest-fields" class="conditional-fields">
           <div class="form-group">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <label for="ROOM">*Room Number:</label>
+              </div>
+              <div class="col-md-2">
+                <label for="CHECK-OUT">*Check-Out Date:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
                 <input type="number" id="ROOM" name="ROOM" class="form-control" min="80" max="5118">
               </div>
-              <div class="col-md-6">
-                <label for="CHECK-OUT">*Check-Out Date:</label>
+              <div class="col-md-2">
                 <input type="date" id="CHECK-OUT" name="CHECK-OUT" class="form-control">
               </div>
             </div>
@@ -97,8 +132,8 @@
           </div>
         </div>
 
-        <div id="save" style="display: none;">
-          <button id="btnSubmit" type="button" class="btn btn-success" onclick="populateModal()">Submit</button>
+        <div id="save" style="display: none;" class="d-grid gap-2">
+          <button id="btnSubmit" type="button" class="btn-success btn-block btn-lg" data-toggle="modal" data-target="#submitModal" onclick="populateModal()">Submit</button>
         </div>
 
       </form>
@@ -125,59 +160,26 @@
 
   </main>
 
-  <!-- Bootstrap and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
   <script>
     let selectedReason = "";
 
-    // Function to handle reason selection
-    function selectReason(reason) {
-      selectedReason = reason;
+    // Helper function to format date to "YYYY-MM-DDTHH:MM"
+    const convertToDateTimeLocalString = (date) => {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const day = date.getDate().toString().padStart(2, "0");
+      const hours = date.getHours().toString().padStart(2, "0");
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
 
-      // Hide all conditional sections
-      document.querySelectorAll('.conditional-fields').forEach(field => field.style.display = 'none');
+    // Set current date and time to CHECK-IN field
+    const currentTime = new Date();
+    const today = convertToDateTimeLocalString(currentTime);
+    document.getElementById('CHECK-IN').value = today;
 
-      // Show the corresponding section based on the reason selected
-      if (reason === 'guest') {
-        document.getElementById('guest-fields').style.display = 'block';
-      } else if (reason === 'other') {
-        document.getElementById('other-fields').style.display = 'block';
-      }
-
-      // Show the main fields (Name & Car Registration)
-      document.getElementById('main-fields').style.display = 'block';
-
-      // Show the confirmation section and save button
-      document.getElementById('confirm-section').style.display = 'block';
-      document.getElementById('save').style.display = 'block';
-    }
-
-    // Populate the modal with form data before submission
-    function populateModal() {
-      const name = document.getElementById('NAME').value;
-      const carRegistration = document.getElementById('CAR-REGISTRATION').value;
-      const room = document.getElementById('ROOM') ? document.getElementById('ROOM').value : '';
-      const checkOut = document.getElementById('CHECK-OUT') ? document.getElementById('CHECK-OUT').value : '';
-
-      const modalContent = `
-        <p><strong>Your Name:</strong> ${name}</p>
-        <p><strong>Car Registration:</strong> ${carRegistration}</p>
-        <p><strong>Room Number:</strong> ${room}</p>
-        <p><strong>Check-out Date:</strong> ${checkOut}</p>
-      `;
-
-      document.getElementById('modalBody').innerHTML = modalContent;
-    }
-
-    // Function to submit the form after confirmation
-    function submitForm() {
-      document.getElementById('registration-form').submit();
-    }
+    // Set minimum CHECK-OUT date to today's date
+    document.getElementById('CHECK-OUT').setAttribute('min', today);
   </script>
 
 </body>
-
-</html>
